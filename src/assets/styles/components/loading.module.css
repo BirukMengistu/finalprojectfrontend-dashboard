@@ -1,0 +1,11 @@
+.loading-circle {
+  position: relative;
+  margin: 8px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px;
+  min-height: 40vh;
+  background-color: '#A5E0D5'
+}

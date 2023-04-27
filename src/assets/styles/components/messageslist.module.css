@@ -1,0 +1,7 @@
+.messages-list-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+  width: 100%;
+  align-items: center
+}

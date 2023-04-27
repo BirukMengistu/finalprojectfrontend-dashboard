@@ -1,0 +1,11 @@
+.c-information {
+  display: flex;
+  justify-content: center;
+  width: 65%;
+  font-size: 11px;
+  padding: 4px
+}
+
+.c-link-color {
+  color: #00bfa6
+}

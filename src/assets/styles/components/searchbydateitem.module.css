@@ -1,0 +1,64 @@
+.searchbydateitem {
+  margin-top: 5px;
+  width: 100%;
+  max-width: 300px;
+  padding: 0 5px
+}
+
+.searchbydateitem .btn {
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+  position: relative;
+  justify-content: space-between;
+  color: white;
+  width: 100%;
+  background-color: var(--g-color-primary);
+  outline: none;
+  padding: 0.75rem;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  font-weight: bold;
+  font-size: 0.75rem;
+  z-index: 0
+}
+
+.searchbydateitem .searchbydateitem-container {
+  padding: 1em;
+  margin-top: -2.5px;
+  border: 1px solid #111;
+  border-radius: 1em
+}
+
+/* ************************************************************** */
+
+/* these styles bellow are targeting the children of the react component SearchByDateItem */
+
+/* ************************************************************** */
+
+.searchbydateitem-container > div header small {
+  display: block
+}
+
+.searchbydateitem-container > div main {
+  padding: 0.5em 0;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111
+}
+
+.searchbydateitem-container > div main small {
+  text-decoration: underline
+}
+
+.searchbydateitem-container > div main p {
+  font-weight: 400
+}
+
+.searchbydateitem-container > div main p span {
+  font-weight: 500;
+  font-size: 0.8em
+}
+
+.searchbydateitem-container > div footer p {
+  font-weight: 500
+}

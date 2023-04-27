@@ -1,0 +1,23 @@
+.star-rating {
+  display: flex;
+  gap: 0.25em;
+  margin-top: 0.5em
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.56rem
+}
+
+.on {
+  color: gold;
+  -webkit-text-stroke: 1px goldenrod
+}
+
+.off {
+  color: #e4e4e4;
+  -webkit-text-stroke: 1px grey
+}

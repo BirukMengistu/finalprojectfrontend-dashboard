@@ -1,0 +1,8 @@
+.c-form {
+  display: flex;
+  flex-direction: column
+}
+
+.c-form label {
+  width: 100%
+}

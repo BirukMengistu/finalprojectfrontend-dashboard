@@ -1,0 +1,135 @@
+/* stylelint-disable declaration-no-important */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: relative;
+  width: 2em;
+  height: 2em;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: white;
+}
+
+/* Color/shape of burger icon bars on hover */
+.bm-burger-bars-hover {
+  background: var(--g-color-secondary);
+}
+
+/* Position and sizing of clickable cross button */
+
+/* .bm-cross-button {
+ position: relative;
+}
+ */
+
+/* Color/shape of close button cross */
+
+/* .bm-cross {
+  height: 2rem !important;
+  width: 0.4rem !important;
+  background: rgb(255 255 255)
+} */
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: relative;
+  height: 80%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: var(--g-color-secondary);
+  padding: 0.1rem 1rem 0;
+  top: 0;
+  margin: 0;
+  font-size: 1.5em;
+  align-items: center;
+  overflow: auto;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2em;
+  height: 70% !important;
+  margin: 0.5em;
+}
+
+/* Individual item */
+
+/* .bm-item {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: large;
+  color: white;
+  overflow: hidden !important;
+  animation: shine 5s linear infinite;
+  animation-play-state: paused
+}
+
+.bm-item:hover {
+  background: rgb(0 0 0 / 47%);
+  border-radius: 0.8rem;
+  animation-play-state: running
+} */
+
+.bm-item {
+  background: rgb(0 0 0 / 30%);
+  margin-top: 0.5em;
+  padding: 0.5rem 1rem;
+  font-size: large;
+  color: white;
+  position: relative;
+  text-align: center;
+  border-radius: 0.1rem;
+  box-shadow: var(--g-box-shadow);
+}
+
+/* button hover style if required */
+
+/* .bm-item-list a:hover {
+  background: rgb(0 0 0 / 47%);
+
+} */
+
+.bm-item-list a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgb(255 255 255 / 11.6%);
+  transition: none;
+}
+
+.bm-item-list a:hover::after {
+  width: 100%;
+  background-color: rgb(255 255 255 / 0%);
+  border-radius: 0.8rem;
+  transition: all 1s ease-out;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: transparent !important;
+}
+
+.bm-footer {
+  box-shadow: none;
+  background: none;
+  justify-self: end;
+  margin-top: 5em;
+  text-align: center;
+}
