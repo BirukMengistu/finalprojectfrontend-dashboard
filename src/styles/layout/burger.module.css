@@ -3,7 +3,7 @@
 */
 
 .bm-menu {
-  background: var(--g-color-secondary);
+  background-color: var(--g-color-secondary);
   padding: 0.1rem 1rem 0;
   margin: 0;
   border: 0;
@@ -49,7 +49,7 @@
   left: 0;
   width: 0%;
   height: 100%;
-  background-color: rgb(255 255 255 / 11.6%);
+  background-color: rgba(164, 148, 0, 0.116);
   transition: none;
 }
 

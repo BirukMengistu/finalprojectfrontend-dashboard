@@ -5,13 +5,13 @@
   --g-font-family: 'Poppins', sans-serif;
   --g-font-size: 0.8rem;
   --g-text-color: #333;
-  --g-color-grey: #8f8f92;
+  --g-color-grey: #ecf7f7;
   --g-primary-title-size: 2rem;
   --g-color-primary: #0a0c01e0;
   --g-color-secondary:#FFD54F ;
   --g-color-warning: #4298ba;
   --g-color-danger: #a90523;
-  --g-color-background: #fff;
+  --g-color-background: #c6cfd3;
   --g-box-shadow: 0 4px 4px rgb(73 72 72 / 70%)
 
 }
@@ -79,18 +79,7 @@ a {
     height: 100vh;
   }
 
-  /*
-  For Mobile:
-@media all and (max-width: 450px) {
-  .bm-menu {
-    height: 100vh;
-  }
-  .opended-navbar{
-    position: absolute;
-    left: 10px;
-    width: 70%!important;
-  }
-} */
+
 }
 
 /* For Tabelt */
@@ -103,10 +92,10 @@ a {
 }
 
 /* Bigger than tablet */
-@media all (min-width: 961px) {
-  .bm-menu {
+@media all and (min-width: 961px) {
+    .bm-menu {
     height: 100vh;
-  }
+     }
 
   .opended-navbar {
     position: relative;
