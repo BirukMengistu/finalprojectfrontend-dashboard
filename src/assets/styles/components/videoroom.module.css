@@ -1,0 +1,88 @@
+.video-wrapper {
+  display: flex;
+  border: 1px solid var(--g-color-secondary);
+  box-shadow: 4px 5px 10px rgb(0 0 0 / 50%);
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  flex-direction: column
+}
+
+/* VIDEO CONTAINER, from component videoTrack.jsx */
+.video-container {
+  padding: 0.1em;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: var(--g-box-shadow);
+  overflow: hidden;
+  justify-content: center
+}
+
+@media screen and (max-width: 768px) {
+  .video-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    box-shadow: none;
+    justify-content: center
+  }
+}
+
+/* PATIENT - SMALL SCREEN */
+.video-local-participant {
+  background-color: white;
+  overflow: hidden;
+  position: absolute;
+  z-index: 100;
+  bottom: 8.4%;
+  right: -1%;
+  height: 10em;
+  width: 9.5rem;
+  border: 1px solid rgb(0 0 0 / 20%);
+  box-shadow: var(--g-box-shadow);
+  border-radius: 0.6em
+}
+
+/* BUTTONS */
+.consultation-video-controls-end-call {
+  background-color: #f00;
+  color: white;
+  border-radius: 50%;
+  border-style: none;
+  padding: 0.7rem 0.9rem 0.9rem;
+  margin-bottom: 0.4rem
+}
+
+.consultation-video-controls-camera {
+  color: white;
+  border-style: none
+}
+
+.consultation-video-controls-mute {
+  color: white;
+  border-style: none
+}
+
+/* ///////// FOOTER MENY ////// */
+.video-footer {
+  width: 100%;
+  display: flex;
+  background-color: var(--g-color-secondary);
+  border-style: none;
+  justify-content: space-evenly;
+  overflow: visible
+}
+
+.footer-circle {
+  position: fixed;
+  bottom: 0;
+  left: 35%;
+  right: 35%;
+  margin: auto;
+  justify-content: space-evenly;
+  border-radius: 50%;
+  width: 5.5rem;
+  height: 5.5rem;
+  background-color: var(--g-color-secondary)
+}

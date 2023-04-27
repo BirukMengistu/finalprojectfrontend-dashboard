@@ -1,0 +1,14 @@
+.p-email-container {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  font-size: 11px;
+  width: auto;
+  padding: 1rem
+}
+
+.p-email-span {
+  font-weight: 600;
+  color: black
+}

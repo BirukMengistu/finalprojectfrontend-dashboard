@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%
+}
+
+.selected-body-part {
+  font-weight: bold;
+  font-size: 1rem
+}
+
+.title {
+  padding: 0 2rem;
+  margin-bottom: 1.2rem;
+  color: #05a98b
+}
+
+.text {
+  text-align: center
+}
+
+.list {
+  margin-top: 1rem
+}
+
+.list li {
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+  cursor: default;
+  text-align: left;
+  font-weight: normal
+}
+
+.list .primary-symptom {
+  font-weight: bold
+}
