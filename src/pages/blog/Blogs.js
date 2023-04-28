@@ -1,19 +1,19 @@
 import React from 'react'
-import useBlog from '../hooks/useBlog'
+import useBlog from '../../hooks/useBlog'
 import { Card, Image, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
-const Home = () => {
+const Blogs = () => {
   const {blog,isLoading ,isError} = useBlog()
   const image ='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWRij83RCMCEYA5i6wCZCe0H6Hhy640RS8yw&usqp=CAU'
   const theme = useMantineTheme();
   const secondaryColor = theme.colorScheme === 'dark'
   ? theme.colors.dark[1]
   : theme.colors.gray[7];
-  const filterBlog= blog?.data.filter((ob,index) => index < 1 )
+ 
   return (
     <div style={{ width: 340, margin: 'auto' }}>
        Home
 
-       {!isLoading && filterBlog.map((tblog,index)=> <div key={index}>
+       {!isLoading && blog?.data.map((tblog,index)=> <div key={index}>
         
        <Card shadow="sm" padding="md">
         <Card.Section>
@@ -44,4 +44,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Blogs
