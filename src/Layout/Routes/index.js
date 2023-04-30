@@ -6,13 +6,13 @@ import React,{Suspense} from 'react';
 const Home = React.lazy(() => import("../../pages/Home"));
 const About = React.lazy(() => import("../../pages/About"));
 const Profile = React.lazy(() => import("../../pages/profile/Profile"));
-const Completeprofile = React.lazy(() => import("../../pages/profile/Completeprofile"));
+const AddProfile = React.lazy(() => import("../../pages/profile/Addprofile"));
 const Blogs = React.lazy(() => import("../../pages/blog/Blogs"));
 const Router = () => {
 
 return (
 		<>
-		
+		      
                 <Routes>
 					<Route exact={true} path='/' element={
                     <Suspense fallback={<div><h1>...Loading</h1></div>}>
@@ -27,12 +27,12 @@ return (
                         <About/>
                        <Profile />
                    </Suspense>} />
-                    <Route path='/completeprofile' element={
-                    <Route path='/profile' element={
+                   
+                    <Route path='/addprofile' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
-                        <Completeprofile />
+                        <AddProfile />
                         </Suspense>} />
-                  } />
+                   
 					<Route path='/resume' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <Home />

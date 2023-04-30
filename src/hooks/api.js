@@ -16,6 +16,9 @@ const Routes = {
 	getProfile: () => {
 		return `/profile/`;
 	},
+	addProfile: () => {
+		return `/profile/`;
+	},
 	getUserbyId: (userId) => {
 		return `/users/${userId}`;
 	},

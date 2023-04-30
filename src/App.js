@@ -1,11 +1,12 @@
 
 
 import { MantineProvider } from '@mantine/core';
-
+import {  Notifications } from '@mantine/notifications'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import Routes from './Layout/Routes/index';
+import { HeroImageBackground } from './pages/HeroPage';
 
 function App() {
 	const queryClient = new QueryClient({
@@ -40,18 +41,19 @@ function App() {
 
 			}}
 		>
-		
+		 <Notifications position='top-center' limit={3} />
 				<QueryClientProvider client={queryClient}>
 					<div id='App' className='App'>
 						<BrowserRouter>
+                          
 							<Layout>
 								 <Routes /> 
 							</Layout>
 						</BrowserRouter>
 					</div>
 				</QueryClientProvider>
-	
-		</MantineProvider>
+    
+	</MantineProvider>
   );
 }
 

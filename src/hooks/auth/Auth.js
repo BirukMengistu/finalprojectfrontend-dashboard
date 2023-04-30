@@ -32,7 +32,7 @@ export const getAuthenticatedUser = () => {
 	};
 	const headers = {
 		'Content-Type': 'application/json',
-		Authorization: `Bearer ${user.token}`
+        'Authorization': `Bearer ${user.token}`
 	};
 	if (!isAuth()) {
 		return window.location.replace(loginUrl);
