@@ -1,9 +1,10 @@
 import Cookies from 'js-cookie';
-import { loginUrl } from '../api';
+import { loginUrl, domain } from '../api';
 
 export const isAuth = () => {
 	const userId = Cookies.get('userId');
 	const token = Cookies.get('token');
+
 	return !!(token && userId);
 };
 
@@ -11,13 +12,15 @@ export const isAuth = () => {
  * It removes the cookies from the browser and redirects the user to the login page.
  * @returns The return value is the result of the window.location.replace() method.
  */
-/* export const logout = () => {
-	const options = { domain: domain, path: '/' };
-	Cookies.remove('ROLE_PATIENT_token', options);
-	Cookies.remove('ROLE_PATIENT_id', options);
-	Cookies.remove('ROLE_PATIENT_userId', options);
-	return window.location.replace(loginUrl);
-}; */
+ export const logout = () => {
+    console.log(domain)
+
+	Cookies.remove('userId');
+	Cookies.remove('token');
+    Cookies.remove('firstName');
+	Cookies.remove('lastName');
+	return window.location.replace('/');
+}; 
 
 
 /**
@@ -28,14 +31,16 @@ export const isAuth = () => {
 export const getAuthenticatedUser = () => {
 	const user = {
 		token: Cookies.get('token'),
-		userId: Cookies.get('userId')
+		userId: Cookies.get('userId'),
+        firstName:Cookies.get('firstName'),
+        lastName:Cookies.get('lastName')
 	};
 	const headers = {
 		'Content-Type': 'application/json',
         'Authorization': `Bearer ${user.token}`
 	};
-	if (!isAuth()) {
+	/* if (!isAuth()) {
 		return window.location.replace(loginUrl);
-	}
+	} */
 	return { data: user, options: headers };
 };

@@ -2,7 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import styles from '../styles/layout/navbar.module.css';
 import  HamburgerMenu  from './HamburgerMenu';
 import Logo from '../assets/images/navbar/hubLogo.svg';
+import { Avatar, Flex } from '@mantine/core';
+import { Auth } from '../hooks/utils'
 const Navbar = () => {
+	const  isAuth  = Auth.isAuth()
+	console.log(isAuth)
 	const navigate = useNavigate();
 	return (
 		<div id='menuID' className={styles['l-navbar']}>
@@ -20,7 +24,12 @@ const Navbar = () => {
 						}
 					}}
 				/>
+                <div style = {{display:'flex', alignItems : 'center'}}>
+				
+				{ isAuth && <Avatar radius='lg' src={null} alt="no image here" color="#FFF8E1" />}
 				<HamburgerMenu />
+				</div>
+				
 			</div>
 		</div>
 	);
