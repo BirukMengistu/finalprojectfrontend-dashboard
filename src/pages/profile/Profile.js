@@ -55,8 +55,7 @@ const Profile = () => {
   const {data} = Auth.getAuthenticatedUser()
   const { classes } = useStyles();
   const currentProfile = userProfile?.data?.filter((temp)=> (temp.userId === data.userId))
-  console.log('Auth data',data.userId)
-  console.log('userProfile data', currentProfile?.[0].address)
+
   const Authorized = Auth.isAuth()
   const redicateAddProfile =()=>{
     Notifications.show({
@@ -68,13 +67,11 @@ const Profile = () => {
       return window.location.replace('/addprofile')
     },1500)
   }
-  console.log(Authorized)
+  console.log(data)
   return (
-    <Container mt='lg'>
-      
-      {(currentProfile?.length===0)?redicateAddProfile():null} 
-
-       <header><h1>User Profile</h1></header>
+    
+       (currentProfile?.length === 0)? redicateAddProfile() : 
+         <Container mt='lg'><header><h1>User Profile</h1></header>
       <Tabs defaultValue="gallery" orientation="vertical" placement="right">
         <Tabs.List>
         <Tabs.Tab value="profile_pic">Profile Picture</Tabs.Tab>
@@ -117,7 +114,7 @@ const Profile = () => {
           backgroundColor:
             theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
         }})}>
-            <TextInput mt="md" label="User full Name" readOnly value={'Hiwot Abo'} classNames={classes} /> 
+            <TextInput mt="md" label="User full Name" readOnly value={`${data.firstName} ${data.lastName}`} classNames={classes} /> 
             
             <TextInput mt="md"label="Gender" readOnly value={currentProfile?.[0].gender} classNames={classes} /> 
             
@@ -155,25 +152,20 @@ const Profile = () => {
          backgroundColor:
            theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
        }})}>
-            <TextInput mt="md" label="email" readOnly placeholder="xx@gmail.com" classNames={classes} />
+            <TextInput mt="md" label="Role" readOnly placeholder="membership role" classNames={classes} />
             
-            <TextInput mt="md"label="Telephone" readOnly placeholder="070xxx" classNames={classes} />
+            <TextInput mt="md"label="Title" readOnly placeholder="jounier, senior ,mid-senior" classNames={classes} />
             
             <TextInput mt="md"label="social Media" readOnly placeholder="twiter | faecbook | telegram" classNames={classes} />
             
        </Box></Tabs.Panel>
      </Tabs>
-    </Container>
+         </Container>
+       
+       
+       
   )
 }
 
 export default Profile
 
-{/* <Box maw={240} mx="auto">
-      <Image
-        radius="md"
-        src="https://images.unsplash.com/photo-1627552245715-77d79bbf6fe2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=80"
-        alt="Random unsplash image"
-        caption="My dog begging for treats"
-      />
-    </Box> */}
