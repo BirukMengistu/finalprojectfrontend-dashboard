@@ -1,11 +1,11 @@
 
-import { useState } from 'react';
+
 import { useForm } from '@mantine/form';
 import { createStyles,SegmentedControl,Button,Flex, rem, Container, Select, TextInput } from '@mantine/core';
 import { DatePickerInput } from '@mantine/dates';
 import useProfile from '../../hooks/useProfile'
 import { Auth } from '../../hooks/utils'
-import { async } from 'q';
+
 const useStyles = createStyles((theme) => ({
   
   root: {
@@ -69,11 +69,12 @@ const useStylesSegments = createStyles((theme) => ({
 
 
 const AddProfile = () => {
-  const {data ,options } = Auth.getAuthenticatedUser()
+  const {data } = Auth.getAuthenticatedUser()
   const {addNewProfile} =useProfile()
   const form = useForm({
     initialValues: {
       address: '',
+      telephone:'',
       role: '',
       gender: '',
       email: '',
@@ -90,15 +91,16 @@ const AddProfile = () => {
   });
 
   const { classes } = useStyles();
-	const {classSeg}=useStylesSegments()
+	
   
    const handleSubmit= (newProfile)=>{
-    const {address ,gender ,email ,userId} =newProfile
+    const {address, telephone ,gender ,email ,userId ,role} =newProfile
     const data ={
       "address": address,
-      "role": gender,
-      "gender": email,
-      "email": userId,
+      "telephone":telephone,
+      "role": role,
+      "gender": gender,
+      "email": email,
       "completed":true,
       "userId":userId
     }
@@ -112,6 +114,9 @@ const AddProfile = () => {
         {...form.getInputProps('address')}
         classNames={classes} />
         <TextInput mt='md'label="Telephone" placeholder="070-XX" 
+        {...form.getInputProps('telephone')} />
+
+        <TextInput mt='md'label="email" placeholder="xx@mail.com" 
         {...form.getInputProps('email')}
         classNames={classes} />
               <Select

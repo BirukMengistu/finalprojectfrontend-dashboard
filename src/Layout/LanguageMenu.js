@@ -3,12 +3,8 @@ import { useDisclosure } from '@mantine/hooks';
 import { Link } from 'react-router-dom';
 import styles from '../styles/layout/burger.module.css';
 import { useMediaQuery } from '@mantine/hooks';
-import { Auth } from '../hooks/utils';
 
-const HamburgerMenu = () => {
-	const isAuth  = Auth.isAuth()
-	
-	console.log('isAuth' ,isAuth)
+const LanguageMenu = () => {
 	const [menu, { toggle, close }] = useDisclosure(false);
 	const matches = useMediaQuery('(max-width: 481px)');
 
@@ -38,13 +34,12 @@ const HamburgerMenu = () => {
 				<Menu.Item component={Link} to='/'>
 					HOME
 				</Menu.Item>
-				{isAuth &&
 				<Menu.Item component={Link} to='/profile'>
 					PROFILE
-				</Menu.Item>}
-				{isAuth && <Menu.Item component={Link} to='/resume'>
+				</Menu.Item>
+				<Menu.Item component={Link} to='/resume'>
 					RESUME
-				</Menu.Item>}
+				</Menu.Item>
 				<Menu.Item component={Link} to='/blog'>
 					BLOG
 				</Menu.Item>
@@ -58,22 +53,13 @@ const HamburgerMenu = () => {
 					FEEDBACK
 				</Menu.Item>
     
-		{isAuth &&
-             <Menu.Item
-               component={Link}
-		      onClick={()=>Auth.logout()}
-              >
-          LOG OUT
-        </Menu.Item>}
-        {!isAuth &&
-		<Menu.Item
+
+        <Menu.Item
           component={Link}
-          onClick={()=>{
-			window.location.replace('http://localhost:3535/')
-		  }}
+          to='/'
           >
-          LOGIN
-        </Menu.Item>}
+          LOG OUT
+        </Menu.Item>
         <p className={styles['bm-footer']}>
           CARELYO <br /> PATIENT
         </p>
@@ -83,5 +69,3 @@ const HamburgerMenu = () => {
 		
   )
 }
-
-export default HamburgerMenu

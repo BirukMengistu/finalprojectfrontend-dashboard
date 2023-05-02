@@ -10,7 +10,7 @@
 
 .navbar {
   display: flex;
-  width: 85%;
+  width: 75%;
   margin: 0 auto;
   align-items: center;
   justify-content: space-between
@@ -23,4 +23,8 @@
   overflow: hidden;
   filter: brightness(0) invert(1);
   cursor: pointer
+}
+
+.navbarlinks {
+  display: flex
 }
