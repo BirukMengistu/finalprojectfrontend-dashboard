@@ -19,6 +19,15 @@ const Routes = {
 	addProfile: () => {
 		return `/profile/`;
 	},
+	getEducation: () => {
+		return `/education/`;
+	},
+	getReference: () => {
+		return `/reference/`;
+	},
+	getProject: () => {
+		return `/project/`;
+	},
 	getUserbyId: (userId) => {
 		return `/users/${userId}`;
 	},

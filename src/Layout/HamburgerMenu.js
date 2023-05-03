@@ -61,7 +61,7 @@ const HamburgerMenu = () => {
 		{isAuth &&
              <Menu.Item
                component={Link}
-		      onClick={()=>Auth.logout()}
+		       onClick={()=>Auth.logout()}
               >
           LOG OUT
         </Menu.Item>}

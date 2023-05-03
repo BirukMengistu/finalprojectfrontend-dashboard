@@ -1,6 +1,10 @@
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Route, Routes } from 'react-router-dom';
 import React,{Suspense} from 'react';
+import Resume from '../../pages/Resume';
+import Education from '../../pages/resume/Education';
+import Reference from '../../pages/resume/Reference';
+import JobExperience from '../../pages/resume/JobExperience';
 
 
 const Home = React.lazy(() => import("../../pages/Home"));
@@ -35,8 +39,23 @@ return (
                    
 					<Route path='/resume' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
-                        <Home />
+                        <Resume />
                         </Suspense>
+                    } />
+                    <Route path='/education' element={
+                        <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                        <Education />
+                        </Suspense>
+                    } />
+                    <Route path='/reference' element={
+                        <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                        <Reference />
+                        </Suspense>
+                    } />
+                      <Route path='/jobexperinace' element={
+                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                         <JobExperience />
+                         </Suspense>
                     } />
                     <Route path='/resume/:id' element={
                          <Suspense fallback={<div><h1>...Loading</h1></div>}>

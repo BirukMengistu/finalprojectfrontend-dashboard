@@ -72,7 +72,7 @@ const Profile = () => {
     
        (currentProfile?.length === 0)? redicateAddProfile() : 
          <Container mt='lg'><header><h1>User Profile</h1></header>
-      <Tabs defaultValue="gallery" orientation="vertical" placement="right">
+      <Tabs defaultValue="profile_pic" orientation="vertical" placement="right">
         <Tabs.List>
         <Tabs.Tab value="profile_pic">Profile Picture</Tabs.Tab>
           <Tabs.Tab value="profile">User Profile</Tabs.Tab>
