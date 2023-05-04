@@ -6,7 +6,7 @@ import { Avatar, Flex } from '@mantine/core';
 import { Auth } from '../hooks/utils'
 const Navbar = () => {
 	const  isAuth  = Auth.isAuth()
-	console.log(isAuth)
+	
 	const navigate = useNavigate();
 	return (
 		<div id='menuID' className={styles['l-navbar']}>

@@ -1,5 +1,5 @@
 import React from 'react'
-import useReference from '../../hooks/useReference'
+import useProject from '../../hooks/useProject'
 import { Group, Avatar, Text, Accordion, ActionIcon, AccordionControlProps, Box } from '@mantine/core';
 
 import { IconDots } from '@tabler/icons-react';
@@ -14,13 +14,13 @@ import { IconDots } from '@tabler/icons-react';
       </Box>
     );
   }
-const Reference = () => {
-    const {reference} = useReference()
-  
+const Project = () => {
+    const {Project} = useProject()
+    console.log(Project?.data)
   
     return (
     <div>
-      <strong>Reference</strong>
+      <strong>Project</strong>
         
             <Accordion chevronPosition="left" maw={400} mx="auto"
             style={{ marginTop: 10 }}
@@ -31,13 +31,16 @@ const Reference = () => {
                 },
             })}>
             {
-            reference?.data?.map((data)  =>   
+            Project?.data?.map((data)  =>   
                 <Accordion.Item value="item-1">
                 {new Date().now }
                 
-                <AccordionControl>{data?.firstName} {data?.lastName}</AccordionControl>
-                <Accordion.Panel>{data?.company}</Accordion.Panel>
-                <Accordion.Panel><p>contact Address-</p> {data?.email}  and {data?.telephone}</Accordion.Panel>
+                  
+
+                <AccordionControl>{data?.project_title} </AccordionControl>
+                <Accordion.Panel><Text>summery-</Text>{data?.summary}</Accordion.Panel>
+                <Accordion.Panel><Text>Role-</Text>{data?.my_role}</Accordion.Panel>
+                <Accordion.Panel><Text>Time -</Text> {data?.startedAt} - {data?.endedAt}</Accordion.Panel>
             </Accordion.Item> 
             ) 
             }   
@@ -50,4 +53,4 @@ const Reference = () => {
   )
 }
 
-export default Reference
+export default Project

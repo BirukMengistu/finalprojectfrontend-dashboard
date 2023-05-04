@@ -4,7 +4,7 @@ export const formatName = (user) => {
 	}
 	return `${user?.title[0].toUpperCase()}${`${user?.title.slice(
 		1
-	)} ${user?.surName[0].toUpperCase()}`}${user?.surName.slice(1)}`;
+	)} ${user?.lastName[0].toUpperCase()}`}${user?.surName.slice(1)}`;
 };
 export const initials = (user) => {
 	if (!user) {

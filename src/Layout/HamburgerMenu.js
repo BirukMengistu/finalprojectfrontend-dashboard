@@ -7,8 +7,6 @@ import { Auth } from '../hooks/utils';
 
 const HamburgerMenu = () => {
 	const isAuth  = Auth.isAuth()
-	
-	console.log('isAuth' ,isAuth)
 	const [menu, { toggle, close }] = useDisclosure(false);
 	const matches = useMediaQuery('(max-width: 481px)');
 

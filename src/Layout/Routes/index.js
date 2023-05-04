@@ -5,6 +5,7 @@ import Resume from '../../pages/Resume';
 import Education from '../../pages/resume/Education';
 import Reference from '../../pages/resume/Reference';
 import JobExperience from '../../pages/resume/JobExperience';
+import { Activeuser } from '../../pages/Activeuser';
 
 
 const Home = React.lazy(() => import("../../pages/Home"));
@@ -55,6 +56,11 @@ return (
                       <Route path='/jobexperinace' element={
                          <Suspense fallback={<div><h1>...Loading</h1></div>}>
                          <JobExperience />
+                         </Suspense>
+                    } />
+                    <Route path='/activeuser' element={
+                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                         <Activeuser />
                          </Suspense>
                     } />
                     <Route path='/resume/:id' element={

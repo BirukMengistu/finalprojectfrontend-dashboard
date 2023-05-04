@@ -2,6 +2,7 @@ import { Box, Container, Tabs } from '@mantine/core';
 import Education from './resume/Education';
 import Reference from './resume/Reference';
 import { Summary } from './resume/Summary';
+import Project from './resume/Project';
 
 
 
@@ -42,6 +43,7 @@ const Resume = () => {
                        {/*Panels*/}
                         <Tabs.Panel value='Portfoilo' pt='xs'>
 							<strong>Portfoilo</strong>
+                            <Project/>
 						</Tabs.Panel>
 						
 						{/*Resume-Summary*/}
