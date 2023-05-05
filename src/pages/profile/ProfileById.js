@@ -6,6 +6,8 @@ import { Box, Tabs ,TextInput ,Image, createStyles, rem } from '@mantine/core';
 import Container from '../../Layout/Container';
 import PageTitle from '../../components/PageTitle';
 
+import { useParams } from 'react-router-dom';
+
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -51,28 +53,29 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const Profile = () => {
+const ProfileById = () => {
   const {userProfile } = useProfile()
+  const {id} = useParams()
   const {data} = Auth.getAuthenticatedUser()
   const { classes } = useStyles();
-  const currentProfile = userProfile?.data?.filter((temp)=> (temp.userId === data.userId))
-
-  const Authorized = Auth.isAuth()
+  const profile = userProfile?.data?.filter((temp) => (temp.userId === id))
+ 
+  console.log(profile)
   const redicateAddProfile =()=>{
     Notifications.show({
-      title: 'User does not exit',
-      message: 'Add profile data, Professional Hub',
+      title: 'User ,  About redirect',
+      message: 'user not Completed his profile profile data, Professional Hub',
       type: 'Warning'
     })
     setTimeout(()=>{
-      return window.location.replace('/addprofile')
-    },1500)
+      return window.location.replace('/')
+    },15500)
   }
-  console.log(data)
+
   return (
        <> 
          <PageTitle heading={'Profile'} />
-       {(currentProfile?.length === 0) ? redicateAddProfile() : 
+       {(profile?.length === 0) ? redicateAddProfile() : 
         <Container mt='lg'>
           <Tabs defaultValue="profile_pic" orientation="vertical" placement="right">
             <Tabs.List>
@@ -116,9 +119,9 @@ const Profile = () => {
               backgroundColor:
                 theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
             }})}>
-                <TextInput mt="md" label="User full Name" readOnly value={`${currentProfile?.[0].firstName} ${currentProfile?.[0].lastName}`} classNames={classes} /> 
+                <TextInput mt="md" label="User full Name" readOnly value={`${profile?.[0].firstName} ${profile?.[0].lastName}`} classNames={classes} /> 
                 
-                <TextInput mt="md"label="Gender" readOnly value={currentProfile?.[0].gender} classNames={classes} /> 
+                <TextInput mt="md"label="Gender" readOnly value={profile?.[0].gender} classNames={classes} /> 
                 
                 <TextInput mt="md"label="Date of Birth" readOnly value="1987" classNames={classes} / > 
           </Box>
@@ -135,11 +138,11 @@ const Profile = () => {
             backgroundColor:
               theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
           }})}>
-                <TextInput mt="md" label="Home Address" readOnly placeholder={currentProfile?.[0].address}  classNames={classes} />
+                <TextInput mt="md" label="Home Address" readOnly placeholder={profile?.[0].address}  classNames={classes} />
                 
-                <TextInput mt="md"label="Telephone" readOnly placeholder={currentProfile?.[0].telephone} classNames={classes} />
+                <TextInput mt="md"label="Telephone" readOnly placeholder={profile?.[0].telephone} classNames={classes} />
                 
-                <TextInput mt="md"label="email" readOnly placeholder={currentProfile?.[0].email} classNames={classes} />
+                <TextInput mt="md"label="email" readOnly placeholder={profile?.[0].email} classNames={classes} />
                 
           </Box></Tabs.Panel>
             <Tabs.Panel value="settings">   
@@ -168,5 +171,4 @@ const Profile = () => {
         
 }
 
-export default Profile
-
+export default ProfileById

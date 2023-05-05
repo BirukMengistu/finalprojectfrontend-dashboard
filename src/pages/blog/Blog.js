@@ -26,7 +26,7 @@ const secondaryColor = theme.colorScheme === 'dark'
                     <Card shadow="sm" padding="md" >
                    
                     <Card.Section>
-                    <Image src={image} height={160} alt="Norway" />
+                    <Image src={image} height={100} alt="Norway" />
                     </Card.Section>
  
                     <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>

@@ -12,7 +12,7 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 		data,
 		isLoading,
 		isError,
-	} = useQuery('getEducation', () => getEducation() )
+	} = useQuery('getEducation', ()=>getEducation() )
 
   
       const addNewEducation = async (education) => {

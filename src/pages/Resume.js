@@ -3,6 +3,7 @@ import Education from './resume/Education';
 import Reference from './resume/Reference';
 import { Summary } from './resume/Summary';
 import Project from './resume/Project';
+import PageTitle from '../components/PageTitle';
 
 
 
@@ -15,6 +16,7 @@ const Resume = () => {
 
 	return (
 		<>
+           <PageTitle heading={'Resume'}/>
 			{/* <PageTitle heading='Profile' /> */}
 			<Container size={'md'}>
 				<Box p={15}>

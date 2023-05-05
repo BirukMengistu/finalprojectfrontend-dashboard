@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStyles, Table, Progress, Anchor, Text, Group, ScrollArea, rem, Button } from '@mantine/core';
 import  useProfile  from '../hooks/useProfile'
-
+import { Link } from 'react-router-dom/dist';
 
 
 
@@ -44,9 +44,14 @@ export function Activeuser() {
 
         <td>
           <Group position="apart">
-            <Button  variant="outline" fz="xs"  weight={700}>
-              Profile
-            </Button>
+           
+                <Anchor variant="outline" fz="xs"  
+                  weight={700} component={Link} 
+                  to={`/getprofilebyId/${row.userId}`}>
+                   Profile
+                </Anchor>
+             
+      
             <Button variant="outline" fz="xs"  weight={700}>
               Resume
             </Button>

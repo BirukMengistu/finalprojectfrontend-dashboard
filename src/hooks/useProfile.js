@@ -20,10 +20,13 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 		return addProfileRes;
 	};
 
+   
+
 	return {
 		userProfile: data,
 		isLoading,
 		isError,
+        getProfileById : (id) =>  data?.data.filter((data)=>data.userId===id),
         addNewProfile
 	};
 };

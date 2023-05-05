@@ -5,6 +5,7 @@ import { createStyles,SegmentedControl,Button,Flex, rem, Container, Select, Text
 import { DatePickerInput } from '@mantine/dates';
 import useProfile from '../../hooks/useProfile'
 import { Auth } from '../../hooks/utils'
+import PageTitle from '../../components/PageTitle';
 
 const useStyles = createStyles((theme) => ({
   
@@ -79,7 +80,9 @@ const AddProfile = () => {
       gender: '',
       email: '',
      // dateOfBirth:'',
-      userId:data.userId
+     firstName:   data.firstName,
+     lastName:      data.lastName,
+    userId:data.userId
     },
     validate: {
       address: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
@@ -94,7 +97,8 @@ const AddProfile = () => {
 	
   
    const handleSubmit= (newProfile)=>{
-    const {address, telephone ,gender ,email ,userId ,role} =newProfile
+    console.log(newProfile)
+    const {address, telephone ,gender ,email ,userId ,role,firstName ,lastName} =newProfile
     const data ={
       "address": address,
       "telephone":telephone,
@@ -102,12 +106,14 @@ const AddProfile = () => {
       "gender": gender,
       "email": email,
       "completed":true,
-      "userId":userId
+      "userId":userId,
+      "firstName":firstName,
+      "lastName":lastName,
     }
     addNewProfile(data)
   }
   return (
-
+    <><PageTitle heading={'Add Profile'} />
     <Container className={classes.root} paddingtop='md' mt='lg'>
         
       	<TextInput mt='md'label="Shipping address" placeholder="15329 Huston 21st"
@@ -165,6 +171,7 @@ const AddProfile = () => {
         </Button>
         </Flex>
     </Container>
+    </>
   )
 }
 

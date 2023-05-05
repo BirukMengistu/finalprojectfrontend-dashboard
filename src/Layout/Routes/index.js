@@ -6,6 +6,8 @@ import Education from '../../pages/resume/Education';
 import Reference from '../../pages/resume/Reference';
 import JobExperience from '../../pages/resume/JobExperience';
 import { Activeuser } from '../../pages/Activeuser';
+import { Contact } from '../../pages/Contact';
+import ProfileById from '../../pages/profile/ProfileById';
 
 
 const Home = React.lazy(() => import("../../pages/Home"));
@@ -33,11 +35,15 @@ return (
                        <Profile />
                    </Suspense>} />
                    
-                    <Route path='/addprofile' element={
+                     <Route path='/addprofile' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <AddProfile />
                         </Suspense>} />
-                   
+                        <Route path='/getprofilebyId/:id' element={
+                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                         <ProfileById/>
+                         </Suspense>
+                    } />
 					<Route path='/resume' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <Resume />
@@ -72,6 +78,10 @@ return (
                          <Suspense fallback={<div><h1>...Loading</h1></div>}>
                            <Blogs />
                         </Suspense>} />
+                        <Route path='/contactus' element={ 
+                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                           <Contact />
+                        </Suspense>} />   
 				</Routes>
 			<ReactQueryDevtools />
 		</>)
