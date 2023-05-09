@@ -22,6 +22,9 @@ const Routes = {
 	getEducation: () => {
 		return `/education/`;
 	},
+	getResume: () => {
+		return `/resume/`;
+	},
 	getReference: () => {
 		return `/reference/`;
 	},

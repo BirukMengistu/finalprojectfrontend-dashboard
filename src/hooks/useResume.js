@@ -1,5 +1,5 @@
 import {  useQuery } from 'react-query';
-import { getReference } from './quaries/getReference';
+import { getResume } from './quaries/getResume';
 import axios from 'axios';
 import { Auth } from './utils';
 const useReference = () => {
@@ -12,20 +12,20 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 		data,
 		isLoading,
 		isError,
-	} = useQuery('getReference', () => getReference() )
+	} = useQuery('getResume', () => getResume() )
 
   
-      const addNewReference =  (Reference) => {
+      const addUpdateResume = async (Reference) => {
         
-        const addReferenceRes=    axios.post(`${apiUrl}/reference`, {...Reference},{headers:Headers})
+        const addReferenceRes=   await axios.post(`${apiUrl}/reference`, {...Reference},{headers:Headers})
 		return addReferenceRes;
 	};
 
 	return {
-		reference: data,
+		resume: data,
 		isLoading,
 		isError,
-        addNewReference
+        addUpdateResume
 	};
 };
 

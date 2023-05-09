@@ -4,14 +4,11 @@ import Reference from './resume/Reference';
 import { Summary } from './resume/Summary';
 import Project from './resume/Project';
 import PageTitle from '../components/PageTitle';
-
+import JobExperience from './resume/JobExperience';
 
 
 
 const Resume = () => {
-
-
-
 
 
 	return (
@@ -50,7 +47,7 @@ const Resume = () => {
 						
 						{/*Resume-Summary*/}
 						<Tabs.Panel value='Resume-Summary' pt='xs'>
-							<Summary/>
+							<Summary />
 						</Tabs.Panel>
 
 						{/*Educations*/}
@@ -60,7 +57,7 @@ const Resume = () => {
 
 						{/* Expriance Info*/}
 						<Tabs.Panel value='Jobs' pt='xs'>
-							<Reference/>
+							<JobExperience/>
 						</Tabs.Panel>
                         <Tabs.Panel value='reference' pt='xs'>
 							<Reference/>

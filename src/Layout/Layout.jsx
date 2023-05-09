@@ -6,6 +6,7 @@ import styles from '../styles/layout/layout.module.css'
 import Navbar from './../Layout/Navbar';
 import Container from './Container';
 
+
 const Layout = ({ children }) => {
 	const media = useMediaQuery('(max-width: 768px)');
 

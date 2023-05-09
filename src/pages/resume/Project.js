@@ -1,6 +1,6 @@
 import React from 'react'
 import useProject from '../../hooks/useProject'
-import { Group, Avatar, Text, Accordion, ActionIcon, AccordionControlProps, Box } from '@mantine/core';
+import { Button, Accordion, ActionIcon, Box } from '@mantine/core';
 
 import { IconDots } from '@tabler/icons-react';
 
@@ -16,36 +16,33 @@ import { IconDots } from '@tabler/icons-react';
   }
 const Project = () => {
     const {Project} = useProject()
-    console.log(Project?.data)
+   
   
     return (
     <div>
-      <strong>Project</strong>
-        
             <Accordion chevronPosition="left" maw={400} mx="auto"
             style={{ marginTop: 10 }}
             sx={(theme) => ({
-                backgroundColor: theme.colors.gray[0],
+                backgroundColor: theme.colors.brand[0],
                 '&:hover': {
-                backgroundColor: theme.colors.gray[1],
+                backgroundColor: theme.colors.brand[0],
                 },
             })}>
             {
-            Project?.data?.map((data)  =>   
-                <Accordion.Item value="item-1">
-                {new Date().now }
-                
-                  
+            Project?.data?.map((data,i)  =>   
+                <Accordion.Item value={data?.project_title}>
 
                 <AccordionControl>{data?.project_title} </AccordionControl>
-                <Accordion.Panel><Text>summery-</Text>{data?.summary}</Accordion.Panel>
-                <Accordion.Panel><Text>Role-</Text>{data?.my_role}</Accordion.Panel>
-                <Accordion.Panel><Text>Time -</Text> {data?.startedAt} - {data?.endedAt}</Accordion.Panel>
-            </Accordion.Item> 
-            ) 
+                <Accordion.Panel><strong>summery-</strong>{data?.summary}</Accordion.Panel>
+                <Accordion.Panel><strong>Role-</strong>{data?.my_role}</Accordion.Panel>
+                <Accordion.Panel><strong>Start -</strong> {data?.startedAt}</Accordion.Panel>
+                <Accordion.Panel><strong>End -</strong>  {data?.endedAt}</Accordion.Panel>
+              </Accordion.Item> 
+            )
+            
             }   
             
-
+            <Button m='md' variant="outline" onClick={()=> window.location.replace('/addproject')}> Add Project</Button> 
             </Accordion>
     
      

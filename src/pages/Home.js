@@ -14,7 +14,7 @@ import { Feature } from '../components/Features';
 const Home = () => {
   const {userProfile } = useProfile()
   const {data} = Auth.getAuthenticatedUser()
-  const {isAuth} = Auth.isAuth()
+  const isAuth = Auth.isAuth()
   const {blog,isLoading } = useBlog()
  
   const filterBlog= blog?.data?.filter((ob,index) => index < 1 )
@@ -23,6 +23,7 @@ const Home = () => {
           <Suspense fallback={<div>Loading...</div>}>
 				  <WelcomeBox user={blog} state={isLoading} />
 				{isAuth && <PageNav path='/profile' text='Profile' src={imageProfile} alt='' />}
+
 				<PageNav
 					path='/activeuser'
 					text='Active User'

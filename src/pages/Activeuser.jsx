@@ -1,8 +1,8 @@
-import React from 'react'
-import { createStyles, Table, Progress, Anchor, Text, Group, ScrollArea, rem, Button } from '@mantine/core';
+import React , {useState}from 'react'
+import { createStyles, Table, TextInput, Anchor, Text, Group, ScrollArea, rem, Button } from '@mantine/core';
 import  useProfile  from '../hooks/useProfile'
 import { Link } from 'react-router-dom/dist';
-
+import {  IconSearch } from '@tabler/icons-react';
 
 
 const useStyles = createStyles((theme) => ({
@@ -20,11 +20,16 @@ const useStyles = createStyles((theme) => ({
 export function Activeuser() {
   const { classes, theme } = useStyles();
   const { userProfile } = useProfile()
-
+  const [search, setSearch] = useState('');
   const rows = userProfile?.data.map((row) => {
     
-
+    const handleSearchChange = (event) => {
+      const { value } = event.currentTarget;
+      setSearch(value);
+      
+    };
     return (
+      
       <tr key={row._id}>
       
         <td>{row.userId}</td>
@@ -58,12 +63,20 @@ export function Activeuser() {
           </Group>
         </td>
       </tr>
+   
     );
   });
 
   return (
     <ScrollArea>
-      <Table sx={{ minWidth: 800 }} verticalSpacing="xs">
+       <TextInput
+        placeholder="Search by any field"
+        mb="md"
+        mt="lg"
+        icon={<IconSearch size="0.9rem" stroke={1.5} />}
+        value={search}
+        />
+      <Table sx={{ minWidth: 500 }} verticalSpacing="xs"  striped highlightOnHover withBorder>
         <thead>
           <tr>
             <th>UserId</th>

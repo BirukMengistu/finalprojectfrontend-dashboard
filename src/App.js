@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import Routes from './Layout/Routes/index';
-import { HeroImageBackground } from './pages/HeroPage';
+
 
 function App() {
 	const queryClient = new QueryClient({
@@ -22,6 +22,7 @@ function App() {
 		<MantineProvider
 			withGlobalStyles={true}
 			withNormalizeCSS={true}
+			
 			theme={{
 				colors: {
 					brand: [
@@ -37,8 +38,11 @@ function App() {
             '#FFC400'
 					]
 				},
-				primaryColor: 'brand'
+				primaryColor: 'brand',
+				colorScheme :'light'
+				
 
+               
 			}}
 		>
 		 <Notifications position='top-center' limit={3} />

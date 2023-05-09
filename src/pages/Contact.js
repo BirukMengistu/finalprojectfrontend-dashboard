@@ -18,12 +18,12 @@ import {
     return {
       wrapper: {
         display: 'flex',
-        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.brand[8] : theme.colors.brand[1],
         borderRadius: theme.radius.lg,
         marginTop:rem(32),
         padding: rem(4),
         borderLeft: `${rem(1)} solid ${
-          theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[2]
+          theme.colors === 'dark' ? theme.colors.dark[8] : theme.colors.gray[2]
         }`,
   
         [BREAKPOINT]: {

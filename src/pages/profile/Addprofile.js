@@ -6,6 +6,7 @@ import { DatePickerInput } from '@mantine/dates';
 import useProfile from '../../hooks/useProfile'
 import { Auth } from '../../hooks/utils'
 import PageTitle from '../../components/PageTitle';
+import { Notifications } from '@mantine/notifications';
 
 const useStyles = createStyles((theme) => ({
   
@@ -110,7 +111,28 @@ const AddProfile = () => {
       "firstName":firstName,
       "lastName":lastName,
     }
-    addNewProfile(data)
+    const response = addNewProfile(data)
+    const responseData = response.data
+    console.log(response)
+    console.log(responseData)
+    if(responseData.statusCode ===201)
+    {
+      Notifications.show({
+       title:'Succesfull',
+       message:'Profile Succesfull added',
+       autoClose: true
+      })
+      window.location.reset('/profile')
+    }
+    if(responseData.status!==201){
+      Notifications.show({
+        title:'Unsuccesfull',
+        message:'Profile failed to added',
+        autoClose: true,
+        color: 'red',
+       })
+    }
+   
   }
   return (
     <><PageTitle heading={'Add Profile'} />
@@ -144,18 +166,9 @@ const AddProfile = () => {
                   data={['Male', 'Famale', 'UnKnown']}
                   
                 />
-             {/*  <DatePickerInput
-                mt="md"
-                mb="md"
-                popoverProps={{ withinPortal: true }}
-                label="Departure date"
-                placeholder="When will you leave?"
-                {...form.getInputProps('dateOfBirth')}
-                classNames={classes}
-                clearable={false}
-              /> */}
+            
         <Flex gap="md" mb='md' mt='md'>      
-	     <Button
+	     <Button variant="outline"
        w={200}
           onClick={() =>handleSubmit(form.values)
           }
@@ -163,7 +176,7 @@ const AddProfile = () => {
           Save Profile
         </Button>
         <Button
-        w={200}
+        w={200} variant="outline"
           onClick={() =>handleSubmit(form.reset())
           }
         >

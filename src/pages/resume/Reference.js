@@ -1,12 +1,12 @@
 import React from 'react'
 import useReference from '../../hooks/useReference'
-import { Group, Avatar, Text, Accordion, ActionIcon, AccordionControlProps, Box } from '@mantine/core';
+import { Button, Accordion,ActionIcon,  Box } from '@mantine/core';
 
 import { IconDots } from '@tabler/icons-react';
 
   function AccordionControl(props) {
     return (
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Box sx={(theme) => ({ display: 'flex', alignItems: 'center', backgroundColor: theme.colors.brand[0] })} >
         <Accordion.Control {...props} />
         <ActionIcon size="lg">
           <IconDots size="1rem" />
@@ -25,24 +25,28 @@ const Reference = () => {
             <Accordion chevronPosition="left" maw={400} mx="auto"
             style={{ marginTop: 10 }}
             sx={(theme) => ({
-                backgroundColor: theme.colors.gray[0],
+                backgroundColor: theme.colors.brand[0],
                 '&:hover': {
-                backgroundColor: theme.colors.gray[1],
+                backgroundColor: theme.colors.brand[0],
                 },
             })}>
             {
             reference?.data?.map((data)  =>   
-                <Accordion.Item value="item-1">
+                <Accordion.Item value={data?.email}>
                 {new Date().now }
                 
                 <AccordionControl>{data?.firstName} {data?.lastName}</AccordionControl>
-                <Accordion.Panel>{data?.company}</Accordion.Panel>
-                <Accordion.Panel><p>contact Address-</p> {data?.email}  and {data?.telephone}</Accordion.Panel>
-            </Accordion.Item> 
+                <Accordion.Panel><strong>Company</strong> {data?.company}</Accordion.Panel>
+               
+                <Accordion.Panel> <strong> Telephone </strong>  {data?.telephone}</Accordion.Panel>
+                <Accordion.Panel> <strong> Email </strong> {data?.email} </Accordion.Panel>
+                
+               
+               </Accordion.Item> 
             ) 
             }   
             
-
+            <Button m='md' variant="outline" Position="center"> Add Reference</Button>
             </Accordion>
     
      

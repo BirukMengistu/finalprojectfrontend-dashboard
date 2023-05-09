@@ -15,9 +15,8 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 	} = useQuery('getEducation', ()=>getEducation() )
 
   
-      const addNewEducation = async (education) => {
-        
-        const addEducationRes=   await axios.post(`${apiUrl}/education`, {...education},{headers:Headers})
+      const addNewEducation =  (education) => {
+        const addEducationRes =    axios.post(`${apiUrl}/education`, {...education},{headers:Headers})
 		return addEducationRes;
 	};
 

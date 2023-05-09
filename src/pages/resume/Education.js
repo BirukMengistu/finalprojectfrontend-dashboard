@@ -1,6 +1,6 @@
 import React from 'react'
 import useEducation from '../../hooks/useEducation'
-import { Group, Avatar, Text,Container, Accordion, ActionIcon, AccordionControlProps, Box } from '@mantine/core';
+import { Group, Avatar,Button, Text,Container, Accordion, ActionIcon, AccordionControlProps, Box } from '@mantine/core';
 
 import { IconDots } from '@tabler/icons-react';
 
@@ -32,34 +32,34 @@ export const AccordionLabel = ({ image , program , endedAt })=> {
   
 const Education = () => {
     const {userEducation} = useEducation()
-    
+     
   return (
     <div>
      <strong>Education</strong> 
   
-     <Container size={'md'}>  
-    <Accordion chevronPosition="left" maw={400} mx="auto"
+    <Container size={'md'}>  
+    <Accordion  maw={400} mx="auto"
        style={{ marginTop: 10 }}
        sx={(theme) => ({
-           backgroundColor: theme.colors.gray[0],
+           backgroundColor: theme.colors.brand[0],
            '&:hover': {
-           backgroundColor: theme.colors.gray[4],
+           backgroundColor: theme.colors.brand[0],
            },
        })}>
      {
        userEducation?.data?.map((data)  =>   
-        <Accordion.Item value="item-1">
-          <AccordionControl>{data?.program}</AccordionControl>
-          <Accordion.Panel> <strong>Institute -</strong>{data?.institute}</Accordion.Panel>
-          <Accordion.Panel><strong>completed -</strong>  { new Date(data?.endedAt).toDateString()}</Accordion.Panel>
-      </Accordion.Item> 
-       ) 
-     }   
+                     <Accordion.Item value={data?.program}>
+                     <AccordionControl>{data?.program}</AccordionControl>
+                          <Accordion.Panel> <strong>Institute -</strong>{data?.institute}</Accordion.Panel>
+                          <Accordion.Panel><strong>completed -</strong>  { new Date(data?.endedAt).toDateString()}</Accordion.Panel>
+                      </Accordion.Item> 
+                      ) 
+                    } 
+            <Button m='md' variant="outline" onClick={()=>window.location.replace('/addeducation')}> Add Education</Button>          
+          </Accordion>
       
-
-      </Accordion>
-    
      </Container>
+     
     </div>
   )
 }
