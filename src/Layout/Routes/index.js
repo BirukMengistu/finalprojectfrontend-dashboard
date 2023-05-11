@@ -4,13 +4,15 @@ import React,{Suspense} from 'react';
 import Resume from '../../pages/Resume';
 import Education from '../../pages/resume/Education';
 import Reference from '../../pages/resume/Reference';
-import JobExperience from '../../pages/resume/JobExperience';
-import { Activeuser } from '../../pages/Activeuser';
-import { Contact } from '../../pages/Contact';
-import ProfileById from '../../pages/profile/ProfileById';
-import AddEducation from '../../pages/resume/AddEducation'
-import AddProject from '../../pages/resume/AddProject';
-
+import { Activeuser}  from '../../pages/Activeuser';
+import {Contact} from "../../pages/Contact"
+import Faq from '../../pages/Faq';
+const AddReference = React.lazy(()=> import("../../pages/resume/AddReference"))
+const JobExperience = React.lazy(() => import("../../pages/resume/JobExperience"));
+const ProfileById = React.lazy(() => import("../../pages/profile/ProfileById"));
+const AddEducation = React.lazy(() => import("../../pages/resume/AddEducation"));
+const AddProject = React.lazy(() => import("../../pages/resume/AddProject"));
+const AddJobExperiance = React.lazy(() => import("../../pages/resume/AddJobExperiance"));
 const Home = React.lazy(() => import("../../pages/Home"));
 const About = React.lazy(() => import("../../pages/About"));
 const Profile = React.lazy(() => import("../../pages/profile/Profile"));
@@ -60,7 +62,18 @@ return (
                         <AddEducation />
                         </Suspense>
                     } />
-                       <Route path='/addproject' element={
+                      <Route path='/addreference' element={
+                        <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                        <AddReference />
+                        </Suspense>
+                    } />
+                       <Route path='/addjobexperiance' element={
+                        <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                        <AddJobExperiance />
+                        </Suspense>
+                    } />
+                    
+                    <Route path='/addproject' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <AddProject />
                         </Suspense>
@@ -85,11 +98,16 @@ return (
                          <Home />
                          </Suspense>
                     } />
-					<Route path='/blog' element={ 
+                       <Route path='/faq' element={
+                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                         <Faq />
+                         </Suspense>
+                    } />
+					  <Route path='/blog' element={ 
                          <Suspense fallback={<div><h1>...Loading</h1></div>}>
                            <Blogs />
                         </Suspense>} />
-                        <Route path='/contactus' element={ 
+                        <Route path='/support' element={ 
                          <Suspense fallback={<div><h1>...Loading</h1></div>}>
                            <Contact />
                         </Suspense>} />   

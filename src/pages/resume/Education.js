@@ -1,7 +1,7 @@
 import React from 'react'
 import useEducation from '../../hooks/useEducation'
 import { Group, Avatar,Button, Text,Container, Accordion, ActionIcon, AccordionControlProps, Box } from '@mantine/core';
-
+import {Notifications} from '@mantine/notifications'
 import { IconDots } from '@tabler/icons-react';
 
 export const AccordionLabel = ({ image , program , endedAt })=> {
@@ -31,8 +31,27 @@ export const AccordionLabel = ({ image , program , endedAt })=> {
   }
   
 const Education = () => {
-    const {userEducation} = useEducation()
+    const {userEducation ,deletEducation} = useEducation()
+    
+    //delete method
+    const removeData =(id)=>{
+      const response = deletEducation(id)
+      const deleteRes =response.data
+      console.log(deleteRes)
+      if(deleteRes.status === 200){
+        
+        setTimeout(()=>{
+          Notifications.show({
+            title:'Succesfull',
+            message:'Education Succesfull Removed',
+            autoClose: true
+           })}, 1500)
+          return window.location.replace('/resume')
+      }
      
+      
+ 
+     }
   return (
     <div>
      <strong>Education</strong> 
@@ -51,7 +70,8 @@ const Education = () => {
                      <Accordion.Item value={data?.program}>
                      <AccordionControl>{data?.program}</AccordionControl>
                           <Accordion.Panel> <strong>Institute -</strong>{data?.institute}</Accordion.Panel>
-                          <Accordion.Panel><strong>completed -</strong>  { new Date(data?.endedAt).toDateString()}</Accordion.Panel>
+                          <Accordion.Panel><strong>completed -</strong>  { (data?.endedAt).substr(0, 10)}</Accordion.Panel>
+                          <Accordion.Panel><Button m='xs' variant="outline" color='red' onClick={()=>removeData(data?._id)} >Remove</Button></Accordion.Panel>
                       </Accordion.Item> 
                       ) 
                     } 

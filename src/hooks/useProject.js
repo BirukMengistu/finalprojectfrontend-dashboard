@@ -20,12 +20,18 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
         const addProjectRes=   await axios.post(`${apiUrl}/Project`, {...Project},{headers:Headers})
 		return addProjectRes;
 	};
+	const deleteProject = (id)=>{
+		const response = axios.delete(`${apiUrl}/Project/${id}`,{ headers :Headers})
+        const deleteRes=response
+		return deleteRes;
+	}
 
 	return {
 		Project: data,
 		isLoading,
 		isError,
-        addNewProject
+        addNewProject,
+		deleteProject
 	};
 };
 

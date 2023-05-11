@@ -52,9 +52,7 @@ const HamburgerMenu = () => {
 				<Menu.Item component={Link} to='/support'>
 					SUPPORT
 				</Menu.Item>
-				<Menu.Item component={Link} to='/feedback'>
-					FEEDBACK
-				</Menu.Item>
+				
     
 		{isAuth &&
              <Menu.Item

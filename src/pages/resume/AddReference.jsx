@@ -1,7 +1,7 @@
 import { useForm } from '@mantine/form';
 import { createStyles,Button,Flex, rem, Container,  TextInput } from '@mantine/core';
 import { DateInput } from '@mantine/dates';
-import useProject from '../../hooks/useProject'
+import useReference from '../../hooks/useReference'
 import { Auth } from '../../hooks/utils'
 import PageTitle from '../../components/PageTitle';
 import { Notifications } from '@mantine/notifications';
@@ -45,49 +45,54 @@ const useStyles = createStyles((theme) => ({
 
 
 
-const AddProject = () => {
+const AddReference = () => {
   const classes = useStyles()
   const {data } = Auth.getAuthenticatedUser()
-  const {addNewProject} =useProject()
-  const [startDate, setStartdate] = useState()
-  const [completedDate, setCompleteddate] = useState()
+  const {addNewReference} =useReference()
+  
   const form = useForm({
     initialValues: {
-      project_title:"",
-      summary: "", 
-      my_role:" " ,
+      Title:"",
+      firstName:"",
+      lastName: "", 
+      email:" " ,
+      company:"",
+      telephone:"",
       userId:data.userId
     },
     validate: {
-      project_title: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      summary: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      my_role: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+      firstName: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+      lastName: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+      company: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+      telephone: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
 
     }
   });
 
-  const handleSubmit=  async (newProject)=>{
+  const handleSubmit=  async (newReference)=>{
     
-    const {project_title ,summary,my_role,userId} = newProject
+    const {firstName,telephone,Title,lastName,email,company,userId} = newReference
     const data ={
-      "project_title": project_title,
-      "summary":summary,
-      "my_role": my_role,
-      "startedAt": startDate,
-      "endedAt": completedDate,
+        "Title":Title,
+      "firstName":firstName ,
+      "email":email,
+      "lastName": lastName,
+      "company": company,
+      "telephone": telephone,
       "userId":userId,
       
     }
     
 
-    const response = await addNewProject(data)
+    const response = await addNewReference(data)
     const responseData = response.data
     
     if(responseData.statusCode ===201)
     {
       Notifications.show({
        title:'Succesfull',
-       message:'Profile Succesfull added',
+       message:'Reference Succesfully added',
        autoClose: true
       })
       setTimeout(()=>{
@@ -99,7 +104,7 @@ const AddProject = () => {
    
       Notifications.show({
         title:'Unsuccesfull',
-        message:'Profile failed to added',
+        message:'failed to added',
         autoClose: true,
         color: 'red',
        })
@@ -109,31 +114,31 @@ const AddProject = () => {
     }
    
   }
+  
+
 
 
   return (
        <>
-       <PageTitle heading={'Add Project'} />
+       <PageTitle heading={'Add Reference'} />
        <Container className={classes.root} paddingtop='md' mt='lg'>
-      	<TextInput mt='md'label="Project Title" placeholder="title of the project "
-        {...form.getInputProps("project_title")}
-        classNames={classes} />
-        <TextInput mt='md'label="Summary" placeholder="short discription about project" 
-        {...form.getInputProps("summary")} />
-
-        <TextInput mt='md'label="Your role" placeholder="your role on the project" 
-         {...form.getInputProps("my_role")}/>
        
-       <DateInput  valueFormat="YYYY MM DD"
-              label="Program Start"  
-              value={startDate}
-             onChange={setStartdate}
-             />
-         
-         <DateInput valueFormat="YYYY MM DD" label="Completed At"  
-              value={completedDate}
-              onChange={setCompleteddate}
-             />
+        <TextInput mt='md'label="First Name" placeholder="firstname of the reference person "
+        {...form.getInputProps("firstName")}
+        classNames={classes} />
+        <TextInput mt='md'label="last Name" placeholder="lastName on the reference person" 
+         {...form.getInputProps("lastName")} classNames={classes}/>
+        <TextInput mt='md'label="company" placeholder=" working place for reference person" 
+        {...form.getInputProps("company")} classNames={classes} />
+        <TextInput mt='md'label="Title" placeholder="Position on working pleace "
+        {...form.getInputProps("Title")}
+        classNames={classes} />
+       <TextInput mt='md'label="telephone" placeholder="Telephone for the reference person" 
+        {...form.getInputProps("telephone")} classNames={classes} />
+        <TextInput mt='md'label="email" placeholder="email (@) for reference person" 
+        {...form.getInputProps("email")} classNames={classes} />
+       
+      
 
         <Flex gap="md" mb='md' mt='md'>      
 	     <Button variant="outline"
@@ -141,7 +146,7 @@ const AddProject = () => {
             onClick={() =>handleSubmit(form.values)
             }
           >
-          Add new Project
+          Add Reference
         </Button>
         <Button
                  w={200} variant="outline"
@@ -156,4 +161,4 @@ const AddProject = () => {
   )
 }
 
-export default AddProject
+export default AddReference

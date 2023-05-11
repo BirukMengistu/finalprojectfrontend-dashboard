@@ -1,4 +1,4 @@
-.login-container {
+.summary-container {
     width: 350px;
     padding: 20px;
     border-radius: 5px;
@@ -8,7 +8,7 @@
     align-items: center;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   }
-  .login-container .profile-img {
+  .summary-container .profile-img {
     height: 80px;
     width: 80px;
     background: url("../../assets/images/profile.jpg");
@@ -20,16 +20,16 @@
     border-radius: 50%;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   }
-  #login-container h1 {
+  #summary-container h1 {
     font-family: "Sriracha", arial, sans-serif;
     text-align: center;
     margin-bottom: 20px;
     color: #ffc145;
   }
-  .login-container .description {
+  .summary-container .description {
     margin-bottom: 20px;
   }
-  .login-container .social {
+  .summary-container .social {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,25 +37,25 @@
     
     margin: 0 auto;
   }
-  .login-container .project {
+  .summary-container .project {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
   }
-  .login-container .social a {
+  .summary-container .social a {
     text-align: center;
     border: solid 2px #e7d4afdc,;
     width: 75px;
     padding: 5px 0;
     border-radius: 5px;
   }
-  .login-container .social a:hover {
+  .summary-container .social a:hover {
     background: #f2a60ec8;
     color: white;
     cursor: pointer;
   }
-  .login-container .button {
+  .summary-container .button {
     width: 80%;
     height: 80px;
     font-size: 2rem;
@@ -69,18 +69,18 @@
     outline: none;
     transition: all 200ms ease-in-out;
   }
-  .login-container button:hover {
+  .summary-container button:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     transform: translateY(2px);
     -webkit-animation: gradientBG 1.5s ease-in-out forwards;
     animation: gradientBG 1.5s ease-in-out forwards;
     cursor: pointer;
   }
-  #login-container button:active {
+  #summary-container button:active {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
     transform: translateY(4px);
   }
-  #login-container footer {
+  #summary-container footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -95,18 +95,23 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
   }
-  #login-container footer div {
+  #summary-container footer div {
     display: flex;
   }
-  #login-container footer div .fa-heart {
+  #summary-container footer div .fa-heart {
     color: #ff6b6c;
   }
-  #login-container footer div p:first-child {
+  #summary-container footer div p:first-child {
     margin-right: 10px;
     border-right: 4px solid white;
     padding-right: 10px;
   }
   
+  hr{
+    margin: 1.2rem;
+    color:#f0f0ec;
+    
+  }
   @-webkit-keyframes gradientBG {
     0% {
       background-position: 0% 50%;

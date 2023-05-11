@@ -3,6 +3,7 @@ import useReference from '../../hooks/useReference'
 import { Button, Accordion,ActionIcon,  Box } from '@mantine/core';
 
 import { IconDots } from '@tabler/icons-react';
+import PageTitle from '../../components/PageTitle';
 
   function AccordionControl(props) {
     return (
@@ -20,7 +21,7 @@ const Reference = () => {
   
     return (
     <div>
-      <strong>Reference</strong>
+         <PageTitle heading={'Reference Info'} />
         
             <Accordion chevronPosition="left" maw={400} mx="auto"
             style={{ marginTop: 10 }}
@@ -37,7 +38,7 @@ const Reference = () => {
                 
                 <AccordionControl>{data?.firstName} {data?.lastName}</AccordionControl>
                 <Accordion.Panel><strong>Company</strong> {data?.company}</Accordion.Panel>
-               
+                <Accordion.Panel><strong>Position</strong> {data?.Title}</Accordion.Panel>
                 <Accordion.Panel> <strong> Telephone </strong>  {data?.telephone}</Accordion.Panel>
                 <Accordion.Panel> <strong> Email </strong> {data?.email} </Accordion.Panel>
                 
@@ -46,7 +47,7 @@ const Reference = () => {
             ) 
             }   
             
-            <Button m='md' variant="outline" Position="center"> Add Reference</Button>
+            <Button m='md' variant="outline" Position="center" onClick={()=> window.location.replace('/addreference')}> Add Reference</Button>
             </Accordion>
     
      

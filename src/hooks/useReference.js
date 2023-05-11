@@ -14,10 +14,10 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 		isError,
 	} = useQuery('getReference', () => getReference() )
 
-  
-      const addNewReference =  (Reference) => {
-        
-        const addReferenceRes=    axios.post(`${apiUrl}/reference`, {...Reference},{headers:Headers})
+    
+      const addNewReference =  (newReference) => {
+        const addReferenceRes=    axios.post(`${apiUrl}/reference/`, {...newReference},{headers:Headers})
+		console.log(addNewReference.Headers)
 		return addReferenceRes;
 	};
 

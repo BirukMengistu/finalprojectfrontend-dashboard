@@ -1,7 +1,7 @@
 import { useForm } from '@mantine/form';
 import { createStyles,Button,Flex, rem, Container,  TextInput } from '@mantine/core';
 import { DateInput } from '@mantine/dates';
-import useProject from '../../hooks/useProject'
+import useJobExperiance from '../../hooks/useJobExperiance'
 import { Auth } from '../../hooks/utils'
 import PageTitle from '../../components/PageTitle';
 import { Notifications } from '@mantine/notifications';
@@ -11,7 +11,7 @@ const useStyles = createStyles((theme) => ({
   
   root: {
     
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.white,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.brand[1],
     boxShadow: theme.shadows.md,
     border: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.brand[4] : theme.colors.brand[1]
@@ -45,34 +45,34 @@ const useStyles = createStyles((theme) => ({
 
 
 
-const AddProject = () => {
+const AddJobExperiance = () => {
   const classes = useStyles()
   const {data } = Auth.getAuthenticatedUser()
-  const {addNewProject} =useProject()
+  const {addNewJobExperiance} =useJobExperiance()
   const [startDate, setStartdate] = useState()
   const [completedDate, setCompleteddate] = useState()
   const form = useForm({
     initialValues: {
-      project_title:"",
-      summary: "", 
-      my_role:" " ,
+      company:"",
+      title: "", 
+      responsibility:" " ,
       userId:data.userId
     },
     validate: {
-      project_title: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      summary: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      my_role: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+      company: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+      title: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+      responsibility: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
 
     }
   });
 
   const handleSubmit=  async (newProject)=>{
     
-    const {project_title ,summary,my_role,userId} = newProject
+    const {company ,title,responsibility,userId} = newProject
     const data ={
-      "project_title": project_title,
-      "summary":summary,
-      "my_role": my_role,
+      "company": company,
+      "title":title,
+      "responsibility": responsibility,
       "startedAt": startDate,
       "endedAt": completedDate,
       "userId":userId,
@@ -80,10 +80,10 @@ const AddProject = () => {
     }
     
 
-    const response = await addNewProject(data)
+    const response = await addNewJobExperiance(data)
     const responseData = response.data
     
-    if(responseData.statusCode ===201)
+    if(responseData.status ===201)
     {
       Notifications.show({
        title:'Succesfull',
@@ -94,9 +94,8 @@ const AddProject = () => {
         return window.location.replace('/resume')
       },1500)
     }
-    if(responseData.statusCode!==201){
+    if(responseData.status!==201){
 
-   
       Notifications.show({
         title:'Unsuccesfull',
         message:'Profile failed to added',
@@ -115,14 +114,15 @@ const AddProject = () => {
        <>
        <PageTitle heading={'Add Project'} />
        <Container className={classes.root} paddingtop='md' mt='lg'>
-      	<TextInput mt='md'label="Project Title" placeholder="title of the project "
-        {...form.getInputProps("project_title")}
+       
+      	<TextInput mt='md'label="Title" placeholder="title of the project "
+        {...form.getInputProps("title")}
         classNames={classes} />
-        <TextInput mt='md'label="Summary" placeholder="short discription about project" 
-        {...form.getInputProps("summary")} />
+        <TextInput mt='md'label="company" placeholder="short discription about project" 
+        {...form.getInputProps("company")} />
 
-        <TextInput mt='md'label="Your role" placeholder="your role on the project" 
-         {...form.getInputProps("my_role")}/>
+        <TextInput mt='md'label="Responsibility" placeholder="your role on the project" 
+         {...form.getInputProps("responsibility")}/>
        
        <DateInput  valueFormat="YYYY MM DD"
               label="Program Start"  
@@ -156,4 +156,4 @@ const AddProject = () => {
   )
 }
 
-export default AddProject
+export default AddJobExperiance

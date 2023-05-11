@@ -30,6 +30,8 @@ const Routes = {
 	},
 	getProject: () => {
 		return `/project/`;
+	},getJobExperiance: () => {
+		return `/jobexperiance`;
 	},
 	getUserbyId: (userId) => {
 		return `/users/${userId}`;

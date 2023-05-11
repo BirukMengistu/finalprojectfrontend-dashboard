@@ -1,7 +1,7 @@
 import React from 'react'
 import useJobExperiance from '../../hooks/useJobExperiance'
 import { Button, Accordion,ActionIcon,  Box } from '@mantine/core';
-
+import {Notifications} from '@mantine/notifications'
 import { IconDots } from '@tabler/icons-react';
 
   function AccordionControl(props) {
@@ -16,8 +16,24 @@ import { IconDots } from '@tabler/icons-react';
   }
 
 const JobExperience = () => {
-  const {JobExperiance} =useJobExperiance()
+  const {JobExperiance ,deleteExperiance} =useJobExperiance()
   console.log(JobExperience)
+
+  const removeData =(id)=>{
+    const deletResponse = deleteExperiance(id)
+    console.log(deletResponse.status)
+    if(deletResponse.status === 200){
+        
+      setTimeout(()=>{
+        Notifications.show({
+          title:'Succesfull',
+          message:'Education Succesfull Removed',
+          autoClose: true
+         })}, 1500)
+        return window.location.replace('/resume')
+    }
+
+   }
   return (
   
       <div>
@@ -39,15 +55,16 @@ const JobExperience = () => {
                 <AccordionControl>{data?.title} </AccordionControl>
                 <Accordion.Panel><strong>Company</strong> {data?.company}</Accordion.Panel>
                 <Accordion.Panel><strong>Responsiblity</strong> {data?.responsibility}</Accordion.Panel>
-                <Accordion.Panel> <strong> From </strong>  {data?.startedAt}</Accordion.Panel>
-                <Accordion.Panel> <strong> To </strong> {data?.endedAt} </Accordion.Panel>
-                
-               
+                <Accordion.Panel> <strong> From </strong>  {(data?.startedAt).substr(0, 10)}</Accordion.Panel>
+                <Accordion.Panel> <strong> To </strong> {(data?.endedAt).substr(0, 10)} </Accordion.Panel>
+                <Accordion.Panel><Button m='xs' variant="outline" color='red' onClick={()=>removeData(data?._id)} >Remove</Button></Accordion.Panel>
                </Accordion.Item> 
             ) 
             }   
             
-            <Button m='md' variant="outline" Position="center"> Add Expriance</Button>
+            <Button m='md' variant="outline" Position="center"
+            onClick={()=> window.location.replace('/addjobexperiance')}
+            > Add Expriance</Button>
             </Accordion>
     
      

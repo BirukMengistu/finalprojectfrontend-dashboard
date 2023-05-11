@@ -10,13 +10,13 @@ const useStyles = createStyles((theme) => ({
   
   root: {
     
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.white,
+    backgroundColor:  theme.colors.brand[1],
     boxShadow: theme.shadows.md,
     border: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.brand[4] : theme.colors.brand[1]
     }`,
   },
- 
+
   indicator: {
     backgroundImage: theme.fn.gradient({ from: 'pink', to: 'orange' }),
   },
@@ -90,7 +90,7 @@ const AddEducation = () => {
         return window.location.replace('/resume')
       },500)
     }
-    if(responseData.status!==201){
+    if(responseData.statusCode!==201){
 
    
       Notifications.show({

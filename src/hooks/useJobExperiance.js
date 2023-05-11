@@ -20,11 +20,17 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 		return addJobExperianceRes;
 	};
 
+	const deleteExperiance = (id)=>{
+		const response = axios.delete(`${apiUrl}/jobexperiance/${id}`,{ headers :Headers})
+        const deleteRes=response
+		return deleteRes;
+	}
 	return {
 		JobExperiance: data,
 		isLoading,
 		isError,
-        addNewJobExperiance
+        addNewJobExperiance,
+		deleteExperiance
 	};
 };
 

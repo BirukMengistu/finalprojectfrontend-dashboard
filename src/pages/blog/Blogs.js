@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Blog from './Blog'
 import useBlog from '../../hooks/useBlog'
-import { SimpleGrid, Container,Autocomplete, Grid, createStyles, Input, TextInput} from '@mantine/core';
+import { SimpleGrid, Container, createStyles, TextInput} from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 const useStyles = createStyles((theme) => ({
 
@@ -25,9 +25,22 @@ const useStyles = createStyles((theme) => ({
 
 const Blogs= () =>{
   const { classes } = useStyles();
+  const [search , setSearch] =useState('')
+  const [filterBlog, SetFilterBlog] = useState([]);
   const {blog } = useBlog()
   const BlogData = blog?.data?.map((data)=>data)
- 
+  const searchBolg = (value)=>{
+    setSearch(value)
+    if (search !== '') {
+      const filteredData = BlogData.filter((item) => {
+          return Object.values(item).join('').toLowerCase().includes(search.toLowerCase())
+      })
+      SetFilterBlog(filteredData)
+  }
+  else{
+     SetFilterBlog(BlogData)
+  }
+  }
 
   return (
     <Container py="xl">
@@ -36,9 +49,11 @@ const Blogs= () =>{
             placeholder="Search"
             icon={<IconSearch size="1rem" stroke={1.5} />}
             mb='md'
+            value ={search}
+            onChange={(e)=>searchBolg(e.target.value)}
           />
       <SimpleGrid cols={3} md={6} lg={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>  
-            { BlogData?.map((blog ,index)=> <Blog key={index}blog ={blog}/>)}
+            {search.length> 1? filterBlog?.map((blog ,index)=> <Blog key={index}blog ={blog}/>): BlogData?.map((blog ,index)=> <Blog key={index}blog ={blog}/>)}
       </SimpleGrid>     
     </Container>
   );
