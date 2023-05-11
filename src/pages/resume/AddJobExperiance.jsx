@@ -114,7 +114,7 @@ const AddJobExperiance = () => {
        <>
        <PageTitle heading={'Add Project'} />
        <Container className={classes.root} paddingtop='md' mt='lg'>
-       
+       <form onSubmit={form.onSubmit(() =>handleSubmit(form.values))}>
       	<TextInput mt='md'label="Title" placeholder="title of the project "
         {...form.getInputProps("title")}
         classNames={classes} />
@@ -138,8 +138,7 @@ const AddJobExperiance = () => {
         <Flex gap="md" mb='md' mt='md'>      
 	     <Button variant="outline"
            w={200}
-            onClick={() =>handleSubmit(form.values)
-            }
+           type="submit"
           >
           Add new Project
         </Button>
@@ -151,6 +150,7 @@ const AddJobExperiance = () => {
                 Reset Form
               </Button>
         </Flex>
+        </form>    
     </Container>
     </>
   )

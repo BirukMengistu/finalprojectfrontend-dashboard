@@ -122,7 +122,7 @@ const AddReference = () => {
        <>
        <PageTitle heading={'Add Reference'} />
        <Container className={classes.root} paddingtop='md' mt='lg'>
-       
+       <form onSubmit={form.onSubmit(() =>handleSubmit(form.values))}>
         <TextInput mt='md'label="First Name" placeholder="firstname of the reference person "
         {...form.getInputProps("firstName")}
         classNames={classes} />
@@ -143,19 +143,19 @@ const AddReference = () => {
         <Flex gap="md" mb='md' mt='md'>      
 	     <Button variant="outline"
            w={200}
-            onClick={() =>handleSubmit(form.values)
-            }
+            type='submit'
           >
           Add Reference
         </Button>
         <Button
                  w={200} variant="outline"
-                onClick={() =>form.reset()}
+                type='submit'
                 
               >
                 Reset Form
               </Button>
         </Flex>
+        </form>
     </Container>
     </>
   )

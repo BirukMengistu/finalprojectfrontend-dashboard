@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Blog from './Blog'
 import useBlog from '../../hooks/useBlog'
-import { SimpleGrid, Container, createStyles, TextInput} from '@mantine/core';
+import { SimpleGrid, Container, createStyles, TextInput, Button} from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 const useStyles = createStyles((theme) => ({
 
@@ -52,9 +52,15 @@ const Blogs= () =>{
             value ={search}
             onChange={(e)=>searchBolg(e.target.value)}
           />
+
+        <Button m='md' variant='outline' onClick={()=>{
+          window.location.replace('/addnewblog')
+        }}> Add New Blog</Button>  
       <SimpleGrid cols={3} md={6} lg={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>  
             {search.length> 1? filterBlog?.map((blog ,index)=> <Blog key={index}blog ={blog}/>): BlogData?.map((blog ,index)=> <Blog key={index}blog ={blog}/>)}
-      </SimpleGrid>     
+      </SimpleGrid>  
+
+
     </Container>
   );
 }

@@ -110,26 +110,25 @@ const AddEducation = () => {
   return (
     <><PageTitle heading={'Add Education'} />
     <Container className={classes.root} paddingtop='md' mt='lg'>
-        
+    <form onSubmit={form.onSubmit(() =>handleSubmit(form.values))}>  
       	<TextInput mt='md'label="Program" placeholder="what program you attended "
         {...form.getInputProps('program')}
         classNames={classes} />
         <TextInput mt='md'label="Institute" placeholder="institute // schooll" 
         {...form.getInputProps('institute')} />
        
-        <label>Program Started</label>
+       
           <DateInput hideOutsideDates label="Program Start"  
             {...form.getInputProps('startedAt')}
              />
-         <label>Program Completed</label>
+        
          <DateInput label="Program Completed"  
             {...form.getInputProps('endedAt')}
              /> 
         <Flex gap="md" mb='md' mt='md'>      
 	     <Button variant="outline"
        w={200}
-          onClick={() =>handleSubmit(form.values)
-          }
+       type="submit"
         >
           Save Education
         </Button>
@@ -141,6 +140,7 @@ const AddEducation = () => {
                 Reset Form
               </Button>
         </Flex>
+     </form>   
     </Container>
     </>
   )
