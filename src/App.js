@@ -9,13 +9,18 @@ import Routes from './Layout/Routes/index';
 
 
 function App() {
+	const twentyFourHoursInMs = 1000 * 60 * 60 * 24;
 	const queryClient = new QueryClient({
 		defaultOptions: {
 			queries: {
-				staleTime: 0,
-				retry: 3
-			}
-		}
+			  refetchOnWindowFocus: false,
+			  refetchOnmount: false,
+			  refetchOnReconnect: false,
+			  retry: false,
+			  staleTime: 0,
+			  cacheTime: 1000 * 60 * 60 * 24, // 24 hours
+			},
+		  },
 	});
 
 	return (

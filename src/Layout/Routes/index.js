@@ -8,6 +8,8 @@ import { Activeuser}  from '../../pages/Activeuser';
 import {Contact} from "../../pages/Contact"
 import Faq from '../../pages/Faq';
 import AddNewBlog from '../../pages/blog/AddNewBlog';
+
+const BlogDetails = React.lazy(()=> import("../../pages/blog/BlogDetails"))
 const AddReference = React.lazy(()=> import("../../pages/resume/AddReference"))
 const JobExperience = React.lazy(() => import("../../pages/resume/JobExperience"));
 const ProfileById = React.lazy(() => import("../../pages/profile/ProfileById"));
@@ -71,6 +73,11 @@ return (
                       <Route path='/addreference' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <AddReference />
+                        </Suspense>
+                    } />
+                    <Route path='/blogdetails/:id' element={
+                        <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                         <BlogDetails />
                         </Suspense>
                     } />
                        <Route path='/addjobexperiance' element={

@@ -122,7 +122,7 @@ const AddReference = () => {
        <>
        <PageTitle heading={'Add Reference'} />
        <Container className={classes.root} paddingtop='md' mt='lg'>
-       <form onSubmit={form.onSubmit(() =>handleSubmit(form.values))}>
+       <form onSubmit={form.onSubmit((values) =>handleSubmit(form.values))}>
         <TextInput mt='md'label="First Name" placeholder="firstname of the reference person "
         {...form.getInputProps("firstName")}
         classNames={classes} />

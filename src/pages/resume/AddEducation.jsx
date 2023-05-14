@@ -110,7 +110,7 @@ const AddEducation = () => {
   return (
     <><PageTitle heading={'Add Education'} />
     <Container className={classes.root} paddingtop='md' mt='lg'>
-    <form onSubmit={form.onSubmit(() =>handleSubmit(form.values))}>  
+    <form onSubmit={form.onSubmit((values) =>handleSubmit(form.values))}>  
       	<TextInput mt='md'label="Program" placeholder="what program you attended "
         {...form.getInputProps('program')}
         classNames={classes} />

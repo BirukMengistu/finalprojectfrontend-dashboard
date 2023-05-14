@@ -27,8 +27,9 @@ const Blogs= () =>{
   const { classes } = useStyles();
   const [search , setSearch] =useState('')
   const [filterBlog, SetFilterBlog] = useState([]);
-  const {blog } = useBlog()
-  const BlogData = blog?.data?.map((data)=>data)
+  const { blog } = useBlog()
+  
+  const BlogData = blog?.map((data)=>data)
   const searchBolg = (value)=>{
     setSearch(value)
     if (search !== '') {

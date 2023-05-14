@@ -5,3 +5,4 @@ import { Routes } from '../api';
 export const getBlog = async () => {
 	return apiCall(Routes.getBlog(), 'GET', {}, );
 };
+

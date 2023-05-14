@@ -114,7 +114,7 @@ const AddJobExperiance = () => {
        <>
        <PageTitle heading={'Add Project'} />
        <Container className={classes.root} paddingtop='md' mt='lg'>
-       <form onSubmit={form.onSubmit(() =>handleSubmit(form.values))}>
+       <form onSubmit={form.onSubmit((values) =>handleSubmit(form.values))}>
       	<TextInput mt='md'label="Title" placeholder="title of the project "
         {...form.getInputProps("title")}
         classNames={classes} />

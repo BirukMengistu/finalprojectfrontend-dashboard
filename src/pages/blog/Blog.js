@@ -1,5 +1,6 @@
 import React from 'react'
-import { Card, Image,Box, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
+import { Card, Image,Box, Text, Badge, Button, Group, useMantineTheme, Anchor } from '@mantine/core';
+import { Link } from 'react-router-dom';
 
 
 const Blog = ({blog}) => {
@@ -11,7 +12,7 @@ const secondaryColor = theme.colorScheme === 'dark'
 : theme.colors.gray[7];
   return (
     <Box sx={(theme) => ({
-        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[3] : theme.colors.gray[0],
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.brand[3] : theme.colors.brand[0],
         textAlign: 'center',
         padding: theme.spacing.md,
         borderRadius: theme.radius.md,
@@ -19,30 +20,40 @@ const secondaryColor = theme.colorScheme === 'dark'
     
         '&:hover': {
           backgroundColor:
-            theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
+            theme.colorScheme === 'dark' ? theme.colors.brand[5] : theme.colors.brand[2],
         },
       })} >
         
                     <Card shadow="sm" padding="md" >
                    
                     <Card.Section>
-                    <Image src={image} height={100} alt="Norway" />
+                    <Image src={blog?.blogImage!== undefined?(blog?.blogImage):image } height={100} alt="Norway" />
                     </Card.Section>
  
                     <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
                     <Text weight={500}>{blog.title}</Text>
-                    <Badge color="pink" variant="light">
-                        latest
-                    </Badge>
+                    <box>
+                    {blog?.tag?.map((data)=>
+
+                      data!==undefined?
+                      <Badge color="blue" variant="light" ml='xs'>{data}</Badge>
+                      :<Badge color="pink" variant="light"> known </Badge>
+                                        
+                      )}
+                    </box>
+                    
                     </Group>
  
                     <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
-                    {blog.body}
+                    {(blog.body).substr(0,50)}
                     </Text>
             
-                    <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
+                    <Link variant="outline"  fullWidth style={{ marginTop: 14 }}
+                        to={{ pathname : `/blogdetails/${blog._id}` 
+                               } }
+                       >
                        Blog details
-                    </Button>
+                    </Link>
               </Card>
        
                  

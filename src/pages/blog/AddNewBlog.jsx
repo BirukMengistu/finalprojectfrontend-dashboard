@@ -7,6 +7,7 @@ import PageTitle from '../../components/PageTitle';
 import { Notifications } from '@mantine/notifications';
 import React from 'react';
 import { useState } from 'react';
+
 const Tag = [
     { value: 'react', label: 'React' },
     { value: 'ng', label: 'Angular' },
@@ -60,7 +61,7 @@ const AddNewBlog = () => {
   const {AddNewBlog} =useBlog()
   const [startDate, setStartdate] = useState()
   const [tagValue, setTagValue] = useState()
-  const [completedDate, setCompleteddate] = useState()
+
   const form = useForm({
     initialValues: {
         authour:"",
@@ -75,30 +76,25 @@ const AddNewBlog = () => {
     validate: {
       authour: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
       tittle: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      tag: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      body: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      blogImage: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      createdAt: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+      body: (value) => (value.length < 10 ? 'Name must have at least 10 letters' : null),
+       tag: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+     blogImage: (value) => (value.length < 10 ? 'address must have at least 10 letters' : null),
+      startDate: (value) => (value.length < 2 ? 'Date must have at select' : null),
+      tagValue: (value) => (value.length < 1 ? 'tag must have at least 1 word' : null),
 
     }
   });
 
 
- /*  authour: String,
-  tittle: String,
-  body: String,
-  createdAt:Date,
-  tag:[],
-  userId:String,
-  review:Boolean,
-  blogImage:String */
-  const handleSubmit=  async (newProject)=>{
+
+  const handleOnSubmit=  async (newProject)=>{
     
-    const {authour ,title,blogImage,review, userId} = newProject
+    const {authour ,body,tittle,blogImage,review, userId} = newProject
     const data ={
       "authour": authour,
-      "title":title,
+      "tittle":tittle,
       "tag": tagValue,
+      "body":body,
       "createdAt": startDate,
       "blogImage": blogImage,
       "review":review,
@@ -142,14 +138,16 @@ const AddNewBlog = () => {
        <>
        <PageTitle heading={'Add New Blog'} />
        <Container className={classes.root} paddingtop='md' mt='lg'>
-       <form onSubmit={form.onSubmit(() =>handleSubmit(form.values))}>
+        {/* form area start */}
+       <form >
+
       	<TextInput withAsterisk mt='md'label="Authour" placeholder="title of the blog "
         {...form.getInputProps("authour")}
         classNames={classes} />
         
 
         <TextInput withAsterisk mt='md'label="Title" placeholder="title of the blog" 
-         {...form.getInputProps("title")}/>
+         {...form.getInputProps("tittle")}/>
          <Textarea withAsterisk mt='md'label="body" placeholder="discription for the blog" 
         {...form.getInputProps("body")} />
           <TextInput withAsterisk mt='md'label="Image Url" placeholder="blog image url /address" 
@@ -167,16 +165,16 @@ const AddNewBlog = () => {
           value={tagValue}
          onChange={setTagValue}
          withAsterisk
-    />
+        />
         
 
         <Flex gap="md" mb='md' mt='md'>      
-	     <Button variant="outline"
-           w={200}
-            type='submit'
-          >
-          Add new Project
-        </Button>
+	     <Button variant="outline" w={200} 
+           
+           onClick={()=>handleOnSubmit(form.values)}
+            >
+            Save new Blog
+          </Button>
         <Button
                  w={200} variant="outline"
                 onClick={() =>form.reset()}
