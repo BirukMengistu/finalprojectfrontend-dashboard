@@ -26,8 +26,7 @@ export function Activeuser() {
     const handleSearchChange = (event) => {
       const { value } = event.currentTarget;
       setSearch(value);
-      
-    };
+       };
     return (
       
       <tr key={row._id}>

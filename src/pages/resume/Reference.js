@@ -4,6 +4,7 @@ import { Button, Accordion,ActionIcon,  Box } from '@mantine/core';
 
 import { IconDots } from '@tabler/icons-react';
 import PageTitle from '../../components/PageTitle';
+import { Auth } from '../../hooks/utils';
 
   function AccordionControl(props) {
     return (
@@ -16,8 +17,9 @@ import PageTitle from '../../components/PageTitle';
     );
   }
 const Reference = () => {
+    const {data} = Auth.getAuthenticatedUser()
     const {reference} = useReference()
-  
+    const userReference= reference?.data?.filter((value)=> value.userId === data?.userId)
   
     return (
     <div>
@@ -32,7 +34,7 @@ const Reference = () => {
                 },
             })}>
             {
-            reference?.data?.map((data)  =>   
+            userReference !== undefined && userReference?.map((data)  =>   
                 <Accordion.Item value={data?.email}>
                 {new Date().now }
                 

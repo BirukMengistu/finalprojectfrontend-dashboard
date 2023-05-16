@@ -3,6 +3,7 @@ import useEducation from '../../hooks/useEducation'
 import { Group, Avatar,Button, Text,Container, Accordion, ActionIcon, AccordionControlProps, Box } from '@mantine/core';
 import {Notifications} from '@mantine/notifications'
 import { IconDots } from '@tabler/icons-react';
+import { Auth } from '../../hooks/utils';
 
 export const AccordionLabel = ({ image , program , endedAt })=> {
     return (
@@ -31,8 +32,10 @@ export const AccordionLabel = ({ image , program , endedAt })=> {
   }
   
 const Education = () => {
+    const {data} =Auth.getAuthenticatedUser()
     const {userEducation ,deletEducation} = useEducation()
-    
+    const userEd = userEducation?.data?.filter((val)=> val.userId===data.userId)
+    console.log('userEd', userEd)
     //delete method
     const removeData =(id)=>{
       const response = deletEducation(id)
@@ -66,7 +69,7 @@ const Education = () => {
            },
        })}>
      {
-       userEducation?.data?.map((data)  =>   
+       userEd?.map((data)  =>   
                      <Accordion.Item value={data?.program}>
                      <AccordionControl>{data?.program}</AccordionControl>
                           <Accordion.Panel> <strong>Institute -</strong>{data?.institute}</Accordion.Panel>

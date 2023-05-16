@@ -3,6 +3,7 @@ import useProject from '../../hooks/useProject'
 import { Button, Accordion, ActionIcon, Box } from '@mantine/core';
 import {Notifications} from '@mantine/notifications'
 import { IconDots } from '@tabler/icons-react';
+import { Auth } from '../../hooks/utils';
 
   function AccordionControl(props) {
     return (
@@ -15,7 +16,10 @@ import { IconDots } from '@tabler/icons-react';
     );
   }
 const Project = () => {
+     const {data} = Auth.getAuthenticatedUser()
      const {Project ,deleteProject} = useProject()
+     const userProject= Project?.data?.filter((value)=> value.userId === data?.userId)
+
      const removeData =(id)=>{
      const deletResponse = deleteProject(id)
      console.log(deletResponse)
@@ -42,7 +46,7 @@ const Project = () => {
                 },
             })}>
             {
-            Project?.data?.map((data,i)  =>   
+            userProject !== undefined &&userProject?.map((data,i)  =>   
                 <Accordion.Item value={data?.project_title}>
 
                 <AccordionControl>{data?.project_title} </AccordionControl>

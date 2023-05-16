@@ -2,7 +2,7 @@ import {  useQuery } from 'react-query';
 import { getResume } from './quaries/getResume';
 import axios from 'axios';
 import { Auth } from './utils';
-const useReference = () => {
+const useResume = () => {
 
 const {data:user , options:Headers} = Auth.getAuthenticatedUser()
 
@@ -25,8 +25,9 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 		resume: data,
 		isLoading,
 		isError,
+		getResumeById : (id) =>  data?.data.filter((data)=>data.userId===id),
         addUpdateResume
 	};
 };
 
-export default useReference;
+export default useResume;

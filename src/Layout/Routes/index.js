@@ -6,16 +6,17 @@ import Education from '../../pages/resume/Education';
 import Reference from '../../pages/resume/Reference';
 import { Activeuser}  from '../../pages/Activeuser';
 import {Contact} from "../../pages/Contact"
-import Faq from '../../pages/Faq';
+import Faq, { FaqWithImage } from '../../pages/Faq';
 import AddNewBlog from '../../pages/blog/AddNewBlog';
-
+import AddReference from  "../../pages/resume/AddReference"
+import AddEducation from "../../pages/resume/AddEducation";
+import AddProject from "../../pages/resume/AddProject";
+import AddJobExperiance from "../../pages/resume/AddJobExperiance";
 const BlogDetails = React.lazy(()=> import("../../pages/blog/BlogDetails"))
-const AddReference = React.lazy(()=> import("../../pages/resume/AddReference"))
+
 const JobExperience = React.lazy(() => import("../../pages/resume/JobExperience"));
 const ProfileById = React.lazy(() => import("../../pages/profile/ProfileById"));
-const AddEducation = React.lazy(() => import("../../pages/resume/AddEducation"));
-const AddProject = React.lazy(() => import("../../pages/resume/AddProject"));
-const AddJobExperiance = React.lazy(() => import("../../pages/resume/AddJobExperiance"));
+
 const Home = React.lazy(() => import("../../pages/Home"));
 const About = React.lazy(() => import("../../pages/About"));
 const Profile = React.lazy(() => import("../../pages/profile/Profile"));
@@ -113,7 +114,7 @@ return (
                     } />
                        <Route path='/faq' element={
                          <Suspense fallback={<div><h1>...Loading</h1></div>}>
-                         <Faq />
+                         <FaqWithImage />
                          </Suspense>
                     } />
 					  <Route path='/blog' element={ 

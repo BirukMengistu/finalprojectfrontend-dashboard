@@ -56,7 +56,7 @@ const Profile = () => {
   const {data} = Auth.getAuthenticatedUser()
   const { classes } = useStyles();
   const currentProfile = userProfile?.data?.filter((temp)=> (temp.userId === data.userId))
-
+  
   const Authorized = Auth.isAuth()
   const redicateAddProfile =()=>{
     Notifications.show({
@@ -68,7 +68,7 @@ const Profile = () => {
       return window.location.replace('/addprofile')
     },1500)
   }
-  console.log(data)
+
   return (
        <> 
          <PageTitle heading={'Profile'} />

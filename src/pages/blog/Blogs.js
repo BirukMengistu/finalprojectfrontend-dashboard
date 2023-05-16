@@ -58,7 +58,7 @@ const Blogs= () =>{
           window.location.replace('/addnewblog')
         }}> Add New Blog</Button>  
       <SimpleGrid cols={3} md={6} lg={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>  
-            {search.length> 1? filterBlog?.map((blog ,index)=> <Blog key={index}blog ={blog}/>): BlogData?.map((blog ,index)=> <Blog key={index}blog ={blog}/>)}
+            {search.length> 1? filterBlog?.map((blog ,index)=> <Blog key={index} blog ={blog}/>): BlogData?.map((blog ,index)=> <Blog key={index}blog ={blog}/>)}
       </SimpleGrid>  
 
 

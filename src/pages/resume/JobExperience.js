@@ -3,7 +3,7 @@ import useJobExperiance from '../../hooks/useJobExperiance'
 import { Button, Accordion,ActionIcon,  Box } from '@mantine/core';
 import {Notifications} from '@mantine/notifications'
 import { IconDots } from '@tabler/icons-react';
-
+import { Auth } from '../../hooks/utils';
   function AccordionControl(props) {
     return (
       <Box sx={(theme) => ({ display: 'flex', alignItems: 'center', backgroundColor: theme.colors.brand[0] })} >
@@ -16,8 +16,10 @@ import { IconDots } from '@tabler/icons-react';
   }
 
 const JobExperience = () => {
-  const {JobExperiance ,deleteExperiance} =useJobExperiance()
-  console.log(JobExperience)
+  const {data} = Auth.getAuthenticatedUser()
+  const {JobExperiance,getJobExperianceById ,deleteExperiance} =useJobExperiance()
+  
+  const userJobExp= JobExperiance?.data?.filter((value)=> value.userId === data?.userId)
 
   const removeData =(id)=>{
     const deletResponse = deleteExperiance(id)
@@ -48,7 +50,7 @@ const JobExperience = () => {
                 },
             })}>
             {
-            JobExperiance?.data?.map((data)  =>   
+            userJobExp!==undefined && userJobExp?.map((data)  =>   
                 <Accordion.Item value={data?.company}>
                 {new Date().now }
                 

@@ -49,6 +49,9 @@ const HamburgerMenu = () => {
 				<Menu.Item component={Link} to='/services'>
 					SERVICES
 				</Menu.Item>
+				<Menu.Item component={Link} to='/faq'>
+					FAQs
+				</Menu.Item>
 				<Menu.Item component={Link} to='/support'>
 					SUPPORT
 				</Menu.Item>

@@ -25,6 +25,7 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 		reference: data,
 		isLoading,
 		isError,
+		getReferenceById : (id) =>  data?.data.filter((data)=>data.userId===id),
         addNewReference
 	};
 };

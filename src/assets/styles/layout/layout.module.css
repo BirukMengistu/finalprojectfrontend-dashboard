@@ -18,7 +18,7 @@
 
 .mobile {
   width: 100%;
-  background-color: white;
+  background-color: rgb(240, 246, 249);
   overflow-y: scroll;
   height: 100vh
 }
@@ -38,7 +38,7 @@
 .desktop {
   display: flex;
   justify-content: center;
-  background-color: white;
+  background-color: rgb(240, 246, 249);
   overflow-y: hidden;
   height: 100vh;
 }

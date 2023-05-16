@@ -60,7 +60,7 @@ const ProfileById = () => {
   const { classes } = useStyles();
   const profile = userProfile?.data?.filter((temp) => (temp.userId === id))
  
-  console.log(profile)
+  
   const redicateAddProfile =()=>{
     Notifications.show({
       title: 'User ,  About redirect',

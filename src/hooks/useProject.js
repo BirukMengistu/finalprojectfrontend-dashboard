@@ -30,6 +30,7 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 		Project: data,
 		isLoading,
 		isError,
+		getProjectById : (id) =>  data?.data.filter((data)=>data.userId===id),
         addNewProject,
 		deleteProject
 	};

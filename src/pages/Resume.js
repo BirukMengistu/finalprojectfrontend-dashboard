@@ -9,7 +9,7 @@ import JobExperience from './resume/JobExperience';
 
 
 const Resume = () => {
-
+ 
 
 	return (
 		<>

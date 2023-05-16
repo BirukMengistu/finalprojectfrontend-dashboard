@@ -9,7 +9,7 @@ import Routes from './Layout/Routes/index';
 
 
 function App() {
-	const twentyFourHoursInMs = 1000 * 60 * 60 * 24;
+	
 	const queryClient = new QueryClient({
 		defaultOptions: {
 			queries: {

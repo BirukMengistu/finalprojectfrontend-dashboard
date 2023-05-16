@@ -29,6 +29,7 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 		JobExperiance: data,
 		isLoading,
 		isError,
+		getJobExperianceById : (id) =>  data?.data.filter((data)=>data.userId===id),
         addNewJobExperiance,
 		deleteExperiance
 	};

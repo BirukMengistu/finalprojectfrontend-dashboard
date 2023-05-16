@@ -59,8 +59,8 @@ const AddEducation = () => {
     validate: {
         program: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
       institute: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      startedAt: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-      endedAt: (value) => (value < 18 ? 'You must be at least 18 to register' : null),
+      startedAt: (value) => (value < 18 ? 'You must be at select valid Date' : null),
+      endedAt: (value) => (value < 18 ? 'You must be at select valid Date' : null),
     }
   });
 

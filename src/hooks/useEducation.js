@@ -30,6 +30,7 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 		userEducation: data,
 		isLoading,
 		isError,
+		getEducationById : (id) =>  data?.data.filter((data)=>data.userId===id),
         addNewEducation,
 		deletEducation
 	};
