@@ -56,7 +56,7 @@ const Profile = () => {
   const {data} = Auth.getAuthenticatedUser()
   const { classes } = useStyles();
   const currentProfile = userProfile?.data?.filter((temp)=> (temp.userId === data.userId))
-  
+
   const Authorized = Auth.isAuth()
   const redicateAddProfile =()=>{
     Notifications.show({
@@ -79,7 +79,7 @@ const Profile = () => {
             <Tabs.Tab value="profile_pic">Profile Picture</Tabs.Tab>
               <Tabs.Tab value="profile">User Profile</Tabs.Tab>
               <Tabs.Tab value="address">Address</Tabs.Tab>
-              <Tabs.Tab value="settings">Status</Tabs.Tab>
+             
             </Tabs.List>
             <Tabs.Panel value="profile_pic" paddingbottom = 'md' mb={100}>
               
@@ -103,7 +103,7 @@ const Profile = () => {
                 </Box>
               </Tabs.Panel>
 
-            <Tabs.Panel value="profile" paddingbottom = 'lg' mb={100}>
+            <Tabs.Panel value="profile" key={'profile'}paddingbottom = 'lg' mb={100}>
               
             <Box sx={(theme) => ({
           
@@ -123,7 +123,7 @@ const Profile = () => {
                 <TextInput mt="md"label="Date of Birth" readOnly value="1987" classNames={classes} / > 
           </Box>
             </Tabs.Panel>
-            <Tabs.Panel value="address">   
+            <Tabs.Panel value="address" key={'address'}>   
             <Box sx={(theme) => ({
           
           margin:theme.spacing.md,
@@ -140,27 +140,10 @@ const Profile = () => {
                 <TextInput mt="md"label="Telephone" readOnly placeholder={currentProfile?.[0].telephone} classNames={classes} />
                 
                 <TextInput mt="md"label="email" readOnly placeholder={currentProfile?.[0].email} classNames={classes} />
-                
+                <TextInput mt="md"label="email" readOnly placeholder={currentProfile?.[0].role} classNames={classes} />
           </Box></Tabs.Panel>
-            <Tabs.Panel value="settings">   
-            <Box sx={(theme) => ({
-          
-          margin:theme.spacing.md,
-          padding: theme.spacing.xl,
-          borderRadius: theme.radius.md,
-          cursor: 'pointer',
-
-          '&:hover': {
-            backgroundColor:
-              theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
-          }})}>
-                <TextInput mt="md" label="Role" readOnly placeholder="membership role" classNames={classes} />
-                
-                <TextInput mt="md"label="Title" readOnly placeholder="jounier, senior ,mid-senior" classNames={classes} />
-                
-                <TextInput mt="md"label="social Media" readOnly placeholder="twiter | faecbook | telegram" classNames={classes} />
-                
-          </Box></Tabs.Panel>
+            
+           
         </Tabs>
         </Container>}
        </>

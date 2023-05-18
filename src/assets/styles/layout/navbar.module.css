@@ -17,13 +17,12 @@
 }
 
 .l-navbar-logo {
-
+  width: 7em;
   height: auto;
   padding: 1em;
   overflow: hidden;
   filter: brightness(0) invert(1);
-  cursor: pointer;
-  fill: #FFD54F ;
+  cursor: pointer
 }
 
 .navbarlinks {

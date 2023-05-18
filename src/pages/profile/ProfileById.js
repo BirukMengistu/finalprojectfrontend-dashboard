@@ -82,7 +82,7 @@ const ProfileById = () => {
             <Tabs.Tab value="profile_pic">Profile Picture</Tabs.Tab>
               <Tabs.Tab value="profile">User Profile</Tabs.Tab>
               <Tabs.Tab value="address">Address</Tabs.Tab>
-              <Tabs.Tab value="settings">Status</Tabs.Tab>
+            
             </Tabs.List>
             <Tabs.Panel value="profile_pic" paddingbottom = 'md' mb={100}>
               
@@ -144,26 +144,14 @@ const ProfileById = () => {
                 
                 <TextInput mt="md"label="email" readOnly placeholder={profile?.[0].email} classNames={classes} />
                 
-          </Box></Tabs.Panel>
-            <Tabs.Panel value="settings">   
-            <Box sx={(theme) => ({
-          
-          margin:theme.spacing.md,
-          padding: theme.spacing.xl,
-          borderRadius: theme.radius.md,
-          cursor: 'pointer',
-
-          '&:hover': {
-            backgroundColor:
-              theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
-          }})}>
-                <TextInput mt="md" label="Role" readOnly placeholder="membership role" classNames={classes} />
+                <TextInput mt="md" label="Role" readOnly placeholder={profile?.[0].role} classNames={classes} />
                 
-                <TextInput mt="md"label="Title" readOnly placeholder="jounier, senior ,mid-senior" classNames={classes} />
+          </Box>
+          </Tabs.Panel>
+           
+            
                 
-                <TextInput mt="md"label="social Media" readOnly placeholder="twiter | faecbook | telegram" classNames={classes} />
-                
-          </Box></Tabs.Panel>
+         
         </Tabs>
         </Container>}
        </>

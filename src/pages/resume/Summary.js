@@ -70,6 +70,10 @@ const filtersummary = ()=>{
               
              </div> 
                <hr /> 
+                 {isAuth && resumeData?.[0]===undefined &&  <Button m='md' 
+                 variant="outline"
+                 onClick={()=> window.location.replace('/addresume')}
+                  >AddNewResume </Button>}
                  {isAuth &&  <Button m='md' variant="outline" >Update</Button>}
             </footer>
           </div>

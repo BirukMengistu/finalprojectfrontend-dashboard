@@ -12,6 +12,8 @@ import AddReference from  "../../pages/resume/AddReference"
 import AddEducation from "../../pages/resume/AddEducation";
 import AddProject from "../../pages/resume/AddProject";
 import AddJobExperiance from "../../pages/resume/AddJobExperiance";
+import ServicePage from '../../pages/Services';
+import AddResume from '../../pages/resume/AddResume';
 const BlogDetails = React.lazy(()=> import("../../pages/blog/BlogDetails"))
 
 const JobExperience = React.lazy(() => import("../../pages/resume/JobExperience"));
@@ -46,7 +48,11 @@ return (
                         <About/>
                        <Profile />
                    </Suspense>} />
-                   
+                   <Route path='/addresume' element={
+                       <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                        <AddResume/>
+                       
+                   </Suspense>} />
                      <Route path='/addprofile' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <AddProfile />
@@ -64,6 +70,11 @@ return (
                     <Route path='/education' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <Education />
+                        </Suspense>
+                    } />
+                     <Route path='/services' element={
+                        <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                        <ServicePage/>
                         </Suspense>
                     } />
                        <Route path='/addeducation' element={

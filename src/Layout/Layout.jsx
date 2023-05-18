@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
 
 	return (
 		<div className={media ? styles.mobile : styles.desktop}>
-			<div className={styles['l-content-wrapper']}>
+			 <div className={styles['l-content-wrapper']}>
 				<div className={styles.navbar}>
 					<Navbar />
 				</div>

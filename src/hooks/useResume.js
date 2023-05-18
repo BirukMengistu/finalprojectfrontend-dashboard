@@ -15,10 +15,10 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 	} = useQuery('getResume', () => getResume() )
 
   
-      const addUpdateResume = async (Reference) => {
+      const addNewResume = async (resume) => {
         
-        const addReferenceRes=   await axios.post(`${apiUrl}/reference`, {...Reference},{headers:Headers})
-		return addReferenceRes;
+        const addresumeRes=   await axios.post(`${apiUrl}/resume`, {...resume},{headers:Headers})
+		return addresumeRes;
 	};
 
 	return {
@@ -26,7 +26,7 @@ const apiUrl = process.env.API_URL || ' http://localhost:9999/api';
 		isLoading,
 		isError,
 		getResumeById : (id) =>  data?.data.filter((data)=>data.userId===id),
-        addUpdateResume
+        addNewResume
 	};
 };
 

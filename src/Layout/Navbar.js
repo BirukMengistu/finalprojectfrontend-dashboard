@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from '../styles/layout/navbar.module.css';
 import  HamburgerMenu  from './HamburgerMenu';
 import Logo from '../assets/images/navbar/hubLogo.svg';
-import { Avatar, Flex } from '@mantine/core';
+import { Avatar} from '@mantine/core';
 import { Auth } from '../hooks/utils'
 import { useState } from 'react';
 import { createStyles, UnstyledButton, Menu, Image, Group, rem } from '@mantine/core';
@@ -92,7 +92,7 @@ const Navbar = () => {
 			          <Menu.Dropdown>{items}</Menu.Dropdown>
               </Menu>
 				{ isAuth && <Avatar radius='lg' src={null} alt="no image here" color="#FFF8E1" />}
-				<HamburgerMenu />
+			 <HamburgerMenu />
 				</div>
 				
 			</div>

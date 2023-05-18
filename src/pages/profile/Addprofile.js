@@ -69,7 +69,6 @@ const useStylesSegments = createStyles((theme) => ({
   },
 }));
 
-
 const AddProfile = () => {
   const {data } = Auth.getAuthenticatedUser()
   const {addNewProfile} =useProfile()
@@ -79,12 +78,13 @@ const AddProfile = () => {
       telephone:'',
       role: '',
       gender: '',
-      email: '',
+      email: data.email,
      // dateOfBirth:'',
-     firstName:   data.firstName,
-     lastName:      data.lastName,
-    userId:data.userId
+     firstName: data?.firstName,
+     lastName:  data?.lastName,
+    userId:data?.userId
     },
+    
     validate: {
       address: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
       role: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
@@ -93,11 +93,11 @@ const AddProfile = () => {
       //dateOfBirth: (value) => (value < 18 ? 'You must be at least 18 to register' : null),
     }
   });
-
+  console.log(data)
   const { classes } = useStyles();
 	
   
-   const handleSubmit= (newProfile)=>{
+   const handleSubmit= async (newProfile)=>{
     console.log(newProfile)
     const {address, telephone ,gender ,email ,userId ,role,firstName ,lastName} =newProfile
     const data ={
@@ -111,11 +111,10 @@ const AddProfile = () => {
       "firstName":firstName,
       "lastName":lastName,
     }
-    const response = addNewProfile(data)
-    const responseData = response.data
-    console.log(response)
+    const responseData = await addNewProfile(data)
+    
     console.log(responseData)
-    if(responseData.statusCode ===201)
+    if(responseData === 201)
     {
       Notifications.show({
        title:'Succesfull',
@@ -144,13 +143,19 @@ const AddProfile = () => {
         <TextInput mt='md'label="Telephone" placeholder="070-XX" 
         {...form.getInputProps('telephone')} />
 
-        <TextInput mt='md'label="email" placeholder="xx@mail.com" 
+        <TextInput mt='md'label="email"  placeholder="xx@mail.com" 
         {...form.getInputProps('email')}
         classNames={classes} />
               <Select
                 mt="md"
                 withinPortal
-                data={['user','null']}
+                data={[
+                  { value: 'Student', label: 'Student' },
+                  { value: 'Jounior', label: 'Jounior' },
+                  { value: 'Mentor', label: 'Mentor' },
+                  { value: 'Hr', label: 'Hr' },
+                  { value: 'Reviewer', label: 'Reviewer' },
+                ]}
                 placeholder="User Role"
                 {...form.getInputProps('role')}
                 label="Your role as Professional Hub user"
