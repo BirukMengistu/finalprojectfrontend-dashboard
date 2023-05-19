@@ -5,7 +5,8 @@ import { Notifications } from '@mantine/notifications'
 import { Box, Tabs ,TextInput ,Image, createStyles, rem } from '@mantine/core';
 import Container from '../../Layout/Container';
 import PageTitle from '../../components/PageTitle';
-
+import Male from  "../../assets/images/Profile-man.jpg"
+import Girl from  "../../assets/images/Profile-girl.jpg"
 import { useParams } from 'react-router-dom';
 
 
@@ -59,7 +60,7 @@ const ProfileById = () => {
   const {data} = Auth.getAuthenticatedUser()
   const { classes } = useStyles();
   const profile = userProfile?.data?.filter((temp) => (temp.userId === id))
- 
+  
   
   const redicateAddProfile =()=>{
     Notifications.show({
@@ -99,9 +100,10 @@ const ProfileById = () => {
           }})}>
                   <Image
                     radius="md"
-                    src="https://images.unsplash.com/photo-1627552245715-77d79bbf6fe2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-                    alt="Random unsplash image"
-                    caption={'User full Name'}
+                    height={250}
+                    src={profile?.[0].gender === 'Male'? Male:Girl}
+                    alt={profile?.[0].gender}
+                    caption={`${profile?.[0].firstName} ${profile?.[0].lastName}`}
                   />
                 </Box>
               </Tabs.Panel>
@@ -146,7 +148,7 @@ const ProfileById = () => {
                 
                 <TextInput mt="md" label="Role" readOnly placeholder={profile?.[0].role} classNames={classes} />
                 
-          </Box>
+           </Box>
           </Tabs.Panel>
            
             

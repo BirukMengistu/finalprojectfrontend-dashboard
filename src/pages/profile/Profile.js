@@ -5,7 +5,8 @@ import { Notifications } from '@mantine/notifications'
 import { Box, Tabs ,TextInput ,Image, createStyles, rem } from '@mantine/core';
 import Container from '../../Layout/Container';
 import PageTitle from '../../components/PageTitle';
-
+import Male from  "../../assets/images/Profile-man.jpg"
+import Girl from  "../../assets/images/Profile-girl.jpg"
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -56,7 +57,7 @@ const Profile = () => {
   const {data} = Auth.getAuthenticatedUser()
   const { classes } = useStyles();
   const currentProfile = userProfile?.data?.filter((temp)=> (temp.userId === data.userId))
-
+  
   const Authorized = Auth.isAuth()
   const redicateAddProfile =()=>{
     Notifications.show({
@@ -96,9 +97,11 @@ const Profile = () => {
           }})}>
                   <Image
                     radius="md"
-                    src="https://images.unsplash.com/photo-1627552245715-77d79bbf6fe2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-                    alt="Random unsplash image"
-                    caption={'User full Name'}
+                    width={250}
+                    height={250}
+                    src={currentProfile?.[0].gender === 'Male'? Male:Girl}
+                    alt={currentProfile?.[0].gender}
+                    caption={`${currentProfile?.[0].firstName} ${currentProfile?.[0].lastName}`}
                   />
                 </Box>
               </Tabs.Panel>

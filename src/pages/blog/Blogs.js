@@ -8,8 +8,8 @@ const useStyles = createStyles((theme) => ({
 
   search: {
     [theme.fn.smallerThan('xs')]: {
-      display: 'none',
-
+      display: 'block',
+      width:400
     },
     '&:hover': {
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],

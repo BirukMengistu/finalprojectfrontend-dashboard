@@ -1,13 +1,16 @@
 import { createStyles, Paper, Text, ThemeIcon, rem } from '@mantine/core';
 import { IconInbox , IconUser ,IconArticle } from '@tabler/icons-react';
+import Container from '../../Layout/Container';
+import PageTitle from '../../components/PageTitle';
 
 const useStyles = createStyles((theme) => ({
   card: {
     position: 'relative',
     cursor: 'pointer',
     overflow: 'hidden',
+    margin:'0.4rem 0.57rem',
     transition: 'transform 150ms ease, box-shadow 100ms ease',
-    padding: theme.spacing.xl,
+    padding: theme.spacing.md,
     paddingLeft: `calc(${theme.spacing.xl} * 2)`,
 
     '&:hover': {
@@ -32,6 +35,9 @@ const useStyles = createStyles((theme) => ({
 const ServiceCard =({ title, description ,icon })=> {
   const { classes } = useStyles();
   return (
+
+    <Container>
+    
     <Paper withBorder radius="md" mt="md" className={classes.card}>
       
       <ThemeIcon
@@ -51,6 +57,7 @@ const ServiceCard =({ title, description ,icon })=> {
         {description}
       </Text>
     </Paper>
+    </Container>
   );
 }
 

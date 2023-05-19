@@ -7,6 +7,7 @@
   min-height: 100%;
   flex: auto;
   top: 0;
+ 
   position: relative;
   z-index: 21;
 }
@@ -18,7 +19,7 @@
 
 .mobile {
   width: 100%;
-  background-color: rgb(255, 255, 255)55, 255, 255);
+  background-color: rgb(235, 235, 233) !important;
   overflow-y: scroll;
   height: 100vh
 }
@@ -38,7 +39,7 @@
 .desktop {
   display: flex;
   justify-content: center;
-  background-color: white;
+  background-color: rgb(236, 236, 232);
   overflow-y: hidden;
   height: 100vh;
 }

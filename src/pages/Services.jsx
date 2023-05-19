@@ -2,6 +2,7 @@ import React from 'react'
 import ServiceCard from './services/ServiesCard'
 import { Grid } from '@mantine/core';
 import Container from '../Layout/Container';
+import PageTitle from '../components/PageTitle';
 //import PageTitle from './services/ServiesCard';
 const BlogData = {
   "title": "Provide Platfrom for the sharing of Knowledge",
@@ -19,7 +20,7 @@ const UserData = {
 const ServicePage = () => {
   return (
     <Container>
-       {/* <PageTitle heading='Admin Panel'/> */}
+       <PageTitle heading={'Services'}/>
        <Grid justify="center" align="center">
        <Grid.Col xs={6}  md={3} lg={3}><ServiceCard title={BlogData.title} description={BlogData.description} icon={'blog'}/></Grid.Col>
        <Grid.Col xs={6} md={3} lg={3}><ServiceCard title={InboxData.title} description={InboxData.description} icon={'inbox'}/></Grid.Col>

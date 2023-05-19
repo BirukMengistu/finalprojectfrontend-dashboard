@@ -14,6 +14,7 @@ import AddProject from "../../pages/resume/AddProject";
 import AddJobExperiance from "../../pages/resume/AddJobExperiance";
 import ServicePage from '../../pages/Services';
 import AddResume from '../../pages/resume/AddResume';
+import { Auth } from '../../hooks/utils';
 const BlogDetails = React.lazy(()=> import("../../pages/blog/BlogDetails"))
 
 const JobExperience = React.lazy(() => import("../../pages/resume/JobExperience"));
@@ -25,7 +26,7 @@ const Profile = React.lazy(() => import("../../pages/profile/Profile"));
 const AddProfile = React.lazy(() => import("../../pages/profile/Addprofile"));
 const Blogs = React.lazy(() => import("../../pages/blog/Blogs"));
 const Router = () => {
-
+const isAuth = Auth.isAuth()
 return (
 		<>
 		      
@@ -35,11 +36,13 @@ return (
 				          <Home />
 			          </Suspense>
                     } />
-                    <Route exact={true} path='/addnewblog' element={
+                    {isAuth &&  <Route exact={true} path='/addnewblog' element={
                     <Suspense fallback={<div><h1>...Loading</h1></div>}>
 				          <AddNewBlog />
 			          </Suspense>
-                    } />
+                    } />}
+                   
+                    
 					<Route exact={true} path='/hub' element={<Suspense fallback={<div><h1>...Loading</h1></div>}>
 				          <Home />
 			          </Suspense>} />
@@ -48,11 +51,12 @@ return (
                         <About/>
                        <Profile />
                    </Suspense>} />
-                   <Route path='/addresume' element={
+                   {isAuth && <Route path='/addresume' element={
                        <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <AddResume/>
                        
-                   </Suspense>} />
+                   </Suspense>} />}
+                   
                      <Route path='/addprofile' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <AddProfile />
@@ -62,67 +66,79 @@ return (
                          <ProfileById/>
                          </Suspense>
                     } />
+                     {isAuth &&
 					<Route path='/resume' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <Resume />
                         </Suspense>
-                    } />
-                    <Route path='/education' element={
+                    } />}
+                    {isAuth && <Route path='/education' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <Education />
                         </Suspense>
-                    } />
+                    } />}
+                     
+                     {isAuth &&
                      <Route path='/services' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <ServicePage/>
                         </Suspense>
-                    } />
+                    } />}
+
+                     {isAuth &&
                        <Route path='/addeducation' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <AddEducation />
                         </Suspense>
-                    } />
+                    } />}
+
+                 {isAuth &&
                       <Route path='/addreference' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <AddReference />
                         </Suspense>
-                    } />
+                    } />}
                     <Route path='/blogdetails/:id' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                          <BlogDetails />
                         </Suspense>
                     } />
+                    {isAuth &&
                        <Route path='/addjobexperiance' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <AddJobExperiance />
                         </Suspense>
                     } />
-                    
+                } 
+                   {isAuth &&
                     <Route path='/addproject' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <AddProject />
                         </Suspense>
-                    } />
+                    } />}
+                    {isAuth &&
                     <Route path='/reference' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <Reference />
                         </Suspense>
-                    } />
+                    } />}
+                    {isAuth &&
                       <Route path='/jobexperinace' element={
                          <Suspense fallback={<div><h1>...Loading</h1></div>}>
                          <JobExperience />
                          </Suspense>
-                    } />
+                    } />}
                     <Route path='/activeuser' element={
                          <Suspense fallback={<div><h1>...Loading</h1></div>}>
                          <Activeuser />
                          </Suspense>
                     } />
+                     {isAuth &&
                     <Route path='/resume/:id' element={
                          <Suspense fallback={<div><h1>...Loading</h1></div>}>
                          <Home />
                          </Suspense>
-                    } />
+                    } />}
                        <Route path='/faq' element={
                          <Suspense fallback={<div><h1>...Loading</h1></div>}>
                          <FaqWithImage />

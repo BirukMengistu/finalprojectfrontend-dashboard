@@ -55,6 +55,9 @@ const Education = () => {
       
  
      }
+
+
+    
   return (
     <div>
      <strong>Education</strong> 
