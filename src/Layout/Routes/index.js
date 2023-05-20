@@ -78,12 +78,12 @@ return (
                         </Suspense>
                     } />}
                      
-                     {isAuth &&
+                     
                      <Route path='/services' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <ServicePage/>
                         </Suspense>
-                    } />}
+                    } />
 
                      {isAuth &&
                        <Route path='/addeducation' element={
