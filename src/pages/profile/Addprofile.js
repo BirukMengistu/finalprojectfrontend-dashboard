@@ -58,7 +58,7 @@ const AddProfile = () => {
      // dateOfBirth:'',
      firstName: data?.firstName,
      lastName:  data?.lastName,
-    userId:data?.userId
+     userId:data?.userId
     },
     
     validate: {
@@ -89,15 +89,16 @@ const AddProfile = () => {
     }
     const responseData = await addNewProfile(data)
     
-   
-    if(responseData === 201)
+   console.log(responseData)
+
+    if(responseData.status === 201)
     {
       Notifications.show({
        title:'Succesfull',
        message:'Profile Succesfull added',
        autoClose: true
       })
-      window.location.reset('/profile')
+      window.location.reset('/')
     }
     if(responseData.status!==201){
       Notifications.show({
