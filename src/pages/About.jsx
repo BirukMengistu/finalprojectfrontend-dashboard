@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useForm } from '@mantine/form';
 import { Link } from 'react-router-dom';
-import { createStyles,ActionIcon, Card, Avatar, Text, Group, Button, rem } from '@mantine/core';
+import { createStyles,ActionIcon, Card, Avatar, Text, Group, Button, rem , Modal ,TextInput} from '@mantine/core';
 import { IconBrandGithub, IconBrandYoutube, IconBrandLinkedin } from '@tabler/icons-react';
 import ProfileImage from "../assets/images/birdev-img.jpg"
+import { Notifications } from '@mantine/notifications';
+import { useDisclosure } from '@mantine/hooks';
 const aboutUs = {
   "image": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
   "avatar": ProfileImage,
@@ -65,7 +68,16 @@ if(label==='Github'){
 
 
 const About =()=> {
+
+
+const form = useForm({
+  initialValues: {
+    name: '',
+    email: '',
+  },
+});
   const { classes, theme } = useStyles();
+  const [opened, { open, close }] = useDisclosure(false);
   const { image, avatar, name, job, stats } = aboutUs
   const items = stats.map((stat) => (
     <div key={stat.label}>
@@ -75,7 +87,7 @@ const About =()=> {
       </Text>
     </div>
   ));
-
+ 
   return (
     <Card withBorder padding="xl" radius="md" mt = 'xl' className={classes.card}>
       <Card.Section sx={{ backgroundImage: `url(${image})`, height: 140 }} />
@@ -95,9 +107,27 @@ const About =()=> {
         mt="xl"
         size="md"
         variant='outline'
+        onClick={open}
       >
-        Follow
+        Subscribe!
       </Button>
+      <Modal opened={opened} onClose={close} title="Thank you for subscribing">
+        <TextInput label="Your Name" placeholder="full Name"  {...form.getInputProps('name')} />
+        <TextInput
+          data-autofocus
+          label="Your email"
+          placeholder="email@xx.co.."
+          {...form.getInputProps('email')}
+          mt="md"
+        />
+        <div style={{justifyContent: 'center' }}>
+        <Button m='md' variant='outline' onClick={close}
+         > Subscribe </Button>
+        <Button onClick={close}> Cancel </Button>
+        </div>
+        
+      </Modal>
+
     </Card>
   );
 }
