@@ -47,7 +47,6 @@ return (
 			          </Suspense>} />
 					<Route path='/profile' element={
                        <Suspense fallback={<div><h1>...Loading</h1></div>}>
-                        <About/>
                        <Profile />
                    </Suspense>} />
                    {isAuth && <Route path='/addresume' element={
@@ -60,9 +59,10 @@ return (
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <AddProfile />
                         </Suspense>} />
+
                         <Route path='/getprofilebyId/:id' element={
                          <Suspense fallback={<div><h1>...Loading</h1></div>}>
-                         <ProfileById/>
+                           <ProfileById/>
                          </Suspense>
                     } />
                      {isAuth &&
@@ -83,11 +83,13 @@ return (
                         <ServicePage/>
                         </Suspense>
                     } />
+                        
                         <Route path='/aboutus' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
-                        <About/>
+                           <About/>
                         </Suspense>
-                    } />
+                          }
+                        />
 
                      {isAuth &&
                        <Route path='/addeducation' element={
