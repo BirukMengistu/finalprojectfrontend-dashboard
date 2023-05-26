@@ -35,8 +35,8 @@ const Education = () => {
     const {data} =Auth.getAuthenticatedUser()
     const {userEducation ,deletEducation} = useEducation()
     const userEd = userEducation?.data?.filter((val)=> val.userId===data.userId)
-    console.log('userEd', userEd)
-    //delete method
+   
+
     const removeData =(id)=>{
       const response = deletEducation(id)
       const deleteRes =response.data

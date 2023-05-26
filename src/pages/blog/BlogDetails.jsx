@@ -11,13 +11,14 @@ import {
   rem,
 } from '@mantine/core';
 import useBlog from '../../hooks/useBlog';
-import { useLocation, useParams } from 'react-router';
-import { async } from 'q';
+import {  useParams } from 'react-router';
+
 
 
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    
   },
 
   section: {
@@ -75,9 +76,9 @@ const  BlogDetails= () =>{
  
 
   return (
-    <>{isLoading? <h2>..isLoding</h2> : <Card withBorder radius="md" p="md" width={200} className={classes.card}>
+    <>{isLoading? <h2>..isLoding</h2> : <Card withBorder radius="md" p="md" style={{width:'80%', marginTop:'2rem' }} className={classes.card}>
     <Card.Section>
-      <Image src={blogImage !==undefined ? blogImage: image} alt={title} height={180} />
+      <Image src={blogImage !==undefined ? blogImage: image} alt={title}  height={180} />
     </Card.Section>
 
     <Card.Section className={classes.section} mt="md">

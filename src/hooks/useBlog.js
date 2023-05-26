@@ -3,7 +3,7 @@ import { getBlog } from './quaries/getBlog';
 import { apiUrl } from './api';
 import axios from 'axios'
 import { Auth } from './utils';
-import { async } from 'q';
+
 
 
 const useBlog = () => {

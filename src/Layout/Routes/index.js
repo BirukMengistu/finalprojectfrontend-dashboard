@@ -15,13 +15,12 @@ import AddJobExperiance from "../../pages/resume/AddJobExperiance";
 import ServicePage from '../../pages/Services';
 import AddResume from '../../pages/resume/AddResume';
 import { Auth } from '../../hooks/utils';
-const BlogDetails = React.lazy(()=> import("../../pages/blog/BlogDetails"))
+import About from '../../pages/About';
 
+const BlogDetails = React.lazy(()=> import("../../pages/blog/BlogDetails"))
 const JobExperience = React.lazy(() => import("../../pages/resume/JobExperience"));
 const ProfileById = React.lazy(() => import("../../pages/profile/ProfileById"));
-
 const Home = React.lazy(() => import("../../pages/Home"));
-const About = React.lazy(() => import("../../pages/About"));
 const Profile = React.lazy(() => import("../../pages/profile/Profile"));
 const AddProfile = React.lazy(() => import("../../pages/profile/Addprofile"));
 const Blogs = React.lazy(() => import("../../pages/blog/Blogs"));
@@ -82,6 +81,11 @@ return (
                      <Route path='/services' element={
                         <Suspense fallback={<div><h1>...Loading</h1></div>}>
                         <ServicePage/>
+                        </Suspense>
+                    } />
+                        <Route path='/aboutus' element={
+                        <Suspense fallback={<div><h1>...Loading</h1></div>}>
+                        <About/>
                         </Suspense>
                     } />
 
