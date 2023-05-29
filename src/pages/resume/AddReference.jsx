@@ -66,6 +66,7 @@ const AddReference = () => {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
       company: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
       telephone: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+      title: (value) => (value.length < 2 ? 'title must have at least 2 letters' : null),
 
     }
   });

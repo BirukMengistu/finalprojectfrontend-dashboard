@@ -7,6 +7,7 @@ import PageTitle from '../../components/PageTitle';
 import { Notifications } from '@mantine/notifications';
 import React from 'react';
 import { useState } from 'react';
+import isUrl from 'is-url';
 
 const Tag = [
     { value: 'react', label: 'React' },
@@ -74,17 +75,16 @@ const AddNewBlog = () => {
         userId:data.userId
     },
     validate: {
-      authour: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+      authour: (value) => (/^[A-Za-z]\\w{2, 20}$/.test(value) ?  null :'Name must have at least 2 letters and valid'),
       tittle: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
       body: (value) => (value.length < 10 ? 'Name must have at least 10 letters' : null),
-       tag: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-     blogImage: (value) => (value.length < 10 ? 'address must have at least 10 letters' : null),
-      startDate: (value) => (value.length < 2 ? 'Date must have at select' : null),
-      tagValue: (value) => (value.length < 1 ? 'tag must have at least 1 word' : null),
-
+      tag: (value) => (value.length === 0 ? 'tag must have at least 1 letters' : null),
+      blogImage: (value) => (isUrl(value) ?  null :'address must be valid'),
+      createdAt: (value) => (value.length===0 ? 'Date must have at select' : null),
     }
   });
 
+ 
 
 
   const handleOnSubmit=  async (newProject)=>{
@@ -114,7 +114,7 @@ const AddNewBlog = () => {
        autoClose: true
       })
       setTimeout(()=>{
-        return window.location.replace('/resume')
+        return window.location.replace('/blog')
       },1500)
     }
     if(responseData.statusCode!==201){
@@ -139,7 +139,7 @@ const AddNewBlog = () => {
        <PageTitle heading={'Add New Blog'} />
        <Container className={classes.root} paddingtop='md' mt='lg'>
         {/* form area start */}
-       <form >
+       <form onSubmit={form.onSubmit((values) =>handleOnSubmit(form.values))} >
 
       	<TextInput withAsterisk mt='md'label="Authour" placeholder="title of the blog "
         {...form.getInputProps("authour")}
@@ -155,7 +155,8 @@ const AddNewBlog = () => {
         <DateInput  valueFormat="YYYY MM DD"
               label="Program Start"  
               value={startDate}
-             onChange={setStartdate}
+              onChange={setStartdate}
+              {...form.getInputProps("createdAt")}
              withAsterisk
              />
          <MultiSelect
@@ -164,14 +165,15 @@ const AddNewBlog = () => {
         placeholder="Pick all that you like"
           value={tagValue}
          onChange={setTagValue}
+         {...form.getInputProps("tag")}
          withAsterisk
         />
         
 
         <Flex gap="md" mb='md' mt='md'>      
 	     <Button variant="outline" w={200} 
-           
-           onClick={()=>handleOnSubmit(form.values)}
+            type='submit'
+           //onClick={()=>handleOnSubmit(form.values)}
             >
             Save new Blog
           </Button>

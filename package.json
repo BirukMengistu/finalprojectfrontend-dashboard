@@ -17,6 +17,7 @@
     "axios": "^1.4.0",
     "dayjs": "^1.11.6",
     "embla-carousel-react": "^7.0.5",
+    "is-url": "^1.2.4",
     "js-cookie": "^3.0.1",
     "react": "^18.2.0",
     "react-auth-kit": "^2.12.2",
@@ -29,6 +30,7 @@
     "react-step-wizard": "^5.3.11",
     "reactjs-popup": "^2.0.5",
     "styled-components": "^5.3.5",
+    "valid-url": "^1.0.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
