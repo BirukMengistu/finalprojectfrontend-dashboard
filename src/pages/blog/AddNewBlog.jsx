@@ -75,7 +75,7 @@ const AddNewBlog = () => {
         userId:data.userId
     },
     validate: {
-      authour: (value) => (/^[A-Za-z]\\w{2, 20}$/.test(value) ?  null :'Name must have at least 2 letters and valid'),
+      authour: (value) => (value.length < 2  ?  null :'Name must have at least 2 letters and valid'),
       tittle: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
       body: (value) => (value.length < 10 ? 'Name must have at least 10 letters' : null),
       tag: (value) => (value.length === 0 ? 'tag must have at least 1 letters' : null),
